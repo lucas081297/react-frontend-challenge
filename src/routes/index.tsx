@@ -1,17 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@tanstack/react-router'
+import { AuthLayout } from '#/routes/__auth.tsx'
 
-export const Route = createFileRoute('/')({ component: App })
-
-function App() {
-  return (
-    <>
-      <main>
-        <img className="absolute z-0 w-screen h-screen object-cover" src="public/bg.png" alt="bg"/>
-        <section className="relative z-1 flex ">
-          <div>aaaaaaaa</div>
-        </section>
-      </main>
-      <footer></footer>
-    </>
-  )
-}
+export const Route = createFileRoute('/')({
+  beforeLoad: ({ context }) => {
+    if (!context.isAuthenticated) {
+      throw redirect({ to: '/login' })
+    }
+  },
+  component: AuthLayout,
+})
