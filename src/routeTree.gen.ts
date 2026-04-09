@@ -9,12 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as _authRouteImport } from './routes/__auth'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as _authHomeRouteImport } from './routes/__auth/home'
 
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const _authRoute = _authRouteImport.update({
+  id: '/__auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -22,40 +34,68 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const _authHomeRoute = _authHomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => _authRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/login': typeof LoginRoute
+  '/home': typeof _authHomeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/login': typeof LoginRoute
+  '/home': typeof _authHomeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/__auth': typeof _authRouteWithChildren
   '/about': typeof AboutRoute
+  '/login': typeof LoginRoute
+  '/__auth/home': typeof _authHomeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths: '/' | '/about' | '/login' | '/home'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to: '/' | '/about' | '/login' | '/home'
+  id: '__root__' | '/' | '/__auth' | '/about' | '/login' | '/__auth/home'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  _authRoute: typeof _authRouteWithChildren
   AboutRoute: typeof AboutRoute
+  LoginRoute: typeof LoginRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/__auth': {
+      id: '/__auth'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof _authRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -65,12 +105,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/__auth/home': {
+      id: '/__auth/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof _authHomeRouteImport
+      parentRoute: typeof _authRoute
+    }
   }
 }
 
+interface _authRouteChildren {
+  _authHomeRoute: typeof _authHomeRoute
+}
+
+const _authRouteChildren: _authRouteChildren = {
+  _authHomeRoute: _authHomeRoute,
+}
+
+const _authRouteWithChildren = _authRoute._addFileChildren(_authRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  _authRoute: _authRouteWithChildren,
   AboutRoute: AboutRoute,
+  LoginRoute: LoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
