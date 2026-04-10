@@ -4,20 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/InputIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Sidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/__auth.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/__auth/home.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/login.tsx" afterDir="false" />
+    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: add custom hook to detect mobile device viewport">
+      <change afterPath="$PROJECT_DIR$/src/components/ButtonIcon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CardImage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/__auth/watchList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routeTree.gen.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routeTree.gen.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/__root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__root.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/__auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/__auth/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth/home.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +23,10 @@
     <persistenceIdMap>
       <entry key="_D:/DEV/Desafios/rotten-potatoes" value="3C3AFKUi1JTXhK8GfiYf5hB5KJm" />
     </persistenceIdMap>
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="60" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -124,8 +122,81 @@
       <workItem from="1775603776450" duration="2049000" />
       <workItem from="1775606006208" duration="525000" />
       <workItem from="1775606548275" duration="1822000" />
-      <workItem from="1775609566502" duration="27276000" />
+      <workItem from="1775609566502" duration="39921000" />
     </task>
+    <task id="LOCAL-00001" summary="feat: add authentication context and update routing for login and home pages">
+      <option name="closed" value="true" />
+      <created>1775696963707</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1775696963707</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: enhance styles with new font and custom animations">
+      <option name="closed" value="true" />
+      <created>1775696975693</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1775696975693</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: add react-icons package for enhanced icon support">
+      <option name="closed" value="true" />
+      <created>1775697019075</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1775697019075</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: add sidebar component with navigation links and logo">
+      <option name="closed" value="true" />
+      <created>1775697029253</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1775697029253</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: update workspace configuration with recent file changes and project settings">
+      <option name="closed" value="true" />
+      <created>1775697043507</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1775697043507</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: add authentication routes and layout for login and home pages">
+      <option name="closed" value="true" />
+      <created>1775697072079</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1775697072079</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat: add card, field, input, and sidebar components with associated utilities">
+      <option name="closed" value="true" />
+      <created>1775697101233</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1775697101233</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat: add logo and image assets to public directory">
+      <option name="closed" value="true" />
+      <created>1775697190531</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1775697190531</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat: add custom hook to detect mobile device viewport">
+      <option name="closed" value="true" />
+      <created>1775697195760</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1775697195760</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,6 +212,18 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: add authentication context and update routing for login and home pages" />
+    <MESSAGE value="feat: enhance styles with new font and custom animations" />
+    <MESSAGE value="feat: add react-icons package for enhanced icon support" />
+    <MESSAGE value="feat: add sidebar component with navigation links and logo" />
+    <MESSAGE value="feat: update workspace configuration with recent file changes and project settings" />
+    <MESSAGE value="feat: add authentication routes and layout for login and home pages" />
+    <MESSAGE value="feat: add card, field, input, and sidebar components with associated utilities" />
+    <MESSAGE value="feat: add logo and image assets to public directory" />
+    <MESSAGE value="feat: add custom hook to detect mobile device viewport" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add custom hook to detect mobile device viewport" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
