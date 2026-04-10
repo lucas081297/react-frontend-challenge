@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: add Badge component for customizable display with variants">
-      <change afterPath="$PROJECT_DIR$/src/components/ui/MovieCarrousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ButtonIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ButtonIcon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CardImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CardImage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/__auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth.tsx" afterDir="false" />
+    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: add Carousel component with navigation and context for enhanced movie display">
       <change beforePath="$PROJECT_DIR$/src/routes/__auth/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth/home.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -122,7 +115,7 @@
       <workItem from="1775603776450" duration="2049000" />
       <workItem from="1775606006208" duration="525000" />
       <workItem from="1775606548275" duration="1822000" />
-      <workItem from="1775609566502" duration="44286000" />
+      <workItem from="1775609566502" duration="44636000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add authentication context and update routing for login and home pages">
       <option name="closed" value="true" />
@@ -252,7 +245,63 @@
       <option name="project" value="LOCAL" />
       <updated>1775805662497</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="feat: enhance ButtonIcon component with customizable className and improved styling">
+      <option name="closed" value="true" />
+      <created>1775858635635</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1775858635635</updated>
+    </task>
+    <task id="LOCAL-00018" summary="feat: update AuthLayout component with improved styling and structure">
+      <option name="closed" value="true" />
+      <created>1775858645786</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1775858645786</updated>
+    </task>
+    <task id="LOCAL-00019" summary="feat: add embla-carousel-react dependency for carousel functionality">
+      <option name="closed" value="true" />
+      <created>1775858654255</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1775858654255</updated>
+    </task>
+    <task id="LOCAL-00020" summary="feat: add embla-carousel-react dependency for carousel functionality">
+      <option name="closed" value="true" />
+      <created>1775858665570</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1775858665570</updated>
+    </task>
+    <task id="LOCAL-00021" summary="feat: enhance CardImage component with improved styling and optional image prop">
+      <option name="closed" value="true" />
+      <created>1775858676249</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1775858676249</updated>
+    </task>
+    <task id="LOCAL-00022" summary="feat: add MovieCarrousel component for displaying movies in a carousel format">
+      <option name="closed" value="true" />
+      <created>1775858684492</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1775858684492</updated>
+    </task>
+    <task id="LOCAL-00023" summary="feat: add Carousel component with navigation and context for enhanced movie display">
+      <option name="closed" value="true" />
+      <created>1775858691312</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1775858691312</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,7 +335,13 @@
     <MESSAGE value="feat: add ButtonIcon component for rendering buttons with icons and labels" />
     <MESSAGE value="feat: add WatchList route component for authentication flow" />
     <MESSAGE value="feat: add Badge component for customizable display with variants" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add Badge component for customizable display with variants" />
+    <MESSAGE value="feat: enhance ButtonIcon component with customizable className and improved styling" />
+    <MESSAGE value="feat: update AuthLayout component with improved styling and structure" />
+    <MESSAGE value="feat: add embla-carousel-react dependency for carousel functionality" />
+    <MESSAGE value="feat: enhance CardImage component with improved styling and optional image prop" />
+    <MESSAGE value="feat: add MovieCarrousel component for displaying movies in a carousel format" />
+    <MESSAGE value="feat: add Carousel component with navigation and context for enhanced movie display" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add Carousel component with navigation and context for enhanced movie display" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
