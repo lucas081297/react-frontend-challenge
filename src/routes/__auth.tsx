@@ -13,16 +13,16 @@ export const Route = createFileRoute('/__auth')({
 
 export function AuthLayout() {
   return (
-    <div className="flex h-screen">
-      <main className="flex-1 overflow-y-auto">
-        <SidebarProvider>
-          <AppSidebar />
-          <main className="w-full">
+    <div className="flex h-screen bg-surface-variant">
+      <SidebarProvider>
+        <AppSidebar />
+        <main className="flex-1 overflow-y-auto overflow-x-hidden">
+          <div className="flex items-center p-4 md:hidden">
             <SidebarTrigger />
-            {<Outlet />}
-          </main>
-        </SidebarProvider>
-      </main>
+          </div>
+          <Outlet />
+        </main>
+      </SidebarProvider>
     </div>
   )
 }
