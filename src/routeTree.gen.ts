@@ -13,6 +13,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as _authRouteImport } from './routes/__auth'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as _authWatchListRouteImport } from './routes/__auth/watchList'
 import { Route as _authHomeRouteImport } from './routes/__auth/home'
 
 const LoginRoute = LoginRouteImport.update({
@@ -34,6 +35,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const _authWatchListRoute = _authWatchListRouteImport.update({
+  id: '/watchList',
+  path: '/watchList',
+  getParentRoute: () => _authRoute,
+} as any)
 const _authHomeRoute = _authHomeRouteImport.update({
   id: '/home',
   path: '/home',
@@ -45,12 +51,14 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/login': typeof LoginRoute
   '/home': typeof _authHomeRoute
+  '/watchList': typeof _authWatchListRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/login': typeof LoginRoute
   '/home': typeof _authHomeRoute
+  '/watchList': typeof _authWatchListRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -59,13 +67,21 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/login': typeof LoginRoute
   '/__auth/home': typeof _authHomeRoute
+  '/__auth/watchList': typeof _authWatchListRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/login' | '/home'
+  fullPaths: '/' | '/about' | '/login' | '/home' | '/watchList'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/login' | '/home'
-  id: '__root__' | '/' | '/__auth' | '/about' | '/login' | '/__auth/home'
+  to: '/' | '/about' | '/login' | '/home' | '/watchList'
+  id:
+    | '__root__'
+    | '/'
+    | '/__auth'
+    | '/about'
+    | '/login'
+    | '/__auth/home'
+    | '/__auth/watchList'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -105,6 +121,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/__auth/watchList': {
+      id: '/__auth/watchList'
+      path: '/watchList'
+      fullPath: '/watchList'
+      preLoaderRoute: typeof _authWatchListRouteImport
+      parentRoute: typeof _authRoute
+    }
     '/__auth/home': {
       id: '/__auth/home'
       path: '/home'
@@ -117,10 +140,12 @@ declare module '@tanstack/react-router' {
 
 interface _authRouteChildren {
   _authHomeRoute: typeof _authHomeRoute
+  _authWatchListRoute: typeof _authWatchListRoute
 }
 
 const _authRouteChildren: _authRouteChildren = {
   _authHomeRoute: _authHomeRoute,
+  _authWatchListRoute: _authWatchListRoute,
 }
 
 const _authRouteWithChildren = _authRoute._addFileChildren(_authRouteChildren)
