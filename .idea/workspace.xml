@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: add custom hook to detect mobile device viewport">
-      <change afterPath="$PROJECT_DIR$/src/components/ButtonIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CardImage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/__auth/watchList.tsx" afterDir="false" />
+    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: add Badge component for customizable display with variants">
+      <change afterPath="$PROJECT_DIR$/src/components/ui/MovieCarrousel.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routeTree.gen.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routeTree.gen.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ButtonIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ButtonIcon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CardImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CardImage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/__auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/__auth/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth/home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +122,7 @@
       <workItem from="1775603776450" duration="2049000" />
       <workItem from="1775606006208" duration="525000" />
       <workItem from="1775606548275" duration="1822000" />
-      <workItem from="1775609566502" duration="39921000" />
+      <workItem from="1775609566502" duration="44286000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add authentication context and update routing for login and home pages">
       <option name="closed" value="true" />
@@ -196,7 +196,63 @@
       <option name="project" value="LOCAL" />
       <updated>1775697195760</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="feat: refine AuthLayout and update background styles for improved UI">
+      <option name="closed" value="true" />
+      <created>1775805581887</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1775805581887</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat: update workspace configuration and add new components for improved project structure">
+      <option name="closed" value="true" />
+      <created>1775805598708</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1775805598708</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat: add watchList route to authentication flow">
+      <option name="closed" value="true" />
+      <created>1775805613740</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1775805613740</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat: add CardImage component for displaying event cover with interactive buttons">
+      <option name="closed" value="true" />
+      <created>1775805629281</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1775805629281</updated>
+    </task>
+    <task id="LOCAL-00014" summary="feat: add ButtonIcon component for rendering buttons with icons and labels">
+      <option name="closed" value="true" />
+      <created>1775805635759</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1775805635759</updated>
+    </task>
+    <task id="LOCAL-00015" summary="feat: add WatchList route component for authentication flow">
+      <option name="closed" value="true" />
+      <created>1775805646983</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1775805646983</updated>
+    </task>
+    <task id="LOCAL-00016" summary="feat: add Badge component for customizable display with variants">
+      <option name="closed" value="true" />
+      <created>1775805662497</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1775805662497</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,7 +279,14 @@
     <MESSAGE value="feat: add card, field, input, and sidebar components with associated utilities" />
     <MESSAGE value="feat: add logo and image assets to public directory" />
     <MESSAGE value="feat: add custom hook to detect mobile device viewport" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add custom hook to detect mobile device viewport" />
+    <MESSAGE value="feat: refine AuthLayout and update background styles for improved UI" />
+    <MESSAGE value="feat: update workspace configuration and add new components for improved project structure" />
+    <MESSAGE value="feat: add watchList route to authentication flow" />
+    <MESSAGE value="feat: add CardImage component for displaying event cover with interactive buttons" />
+    <MESSAGE value="feat: add ButtonIcon component for rendering buttons with icons and labels" />
+    <MESSAGE value="feat: add WatchList route component for authentication flow" />
+    <MESSAGE value="feat: add Badge component for customizable display with variants" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add Badge component for customizable display with variants" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
