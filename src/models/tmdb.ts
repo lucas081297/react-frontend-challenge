@@ -1,0 +1,8 @@
+// Resposta de paginação da API
+
+export interface TMDBResponse<T> {
+  page: number
+  results: T[]
+  total_pages: number
+  total_results: number
+}
