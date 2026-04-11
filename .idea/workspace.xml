@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: add Carousel component with navigation and context for enhanced movie display">
-      <change beforePath="$PROJECT_DIR$/src/routes/__auth/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth/home.tsx" afterDir="false" />
+    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: update Home component to include trending and continue watching movie carousels">
+      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/movie.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/tmdb.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/movies/movies.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +26,13 @@
   <component name="EmbeddingIndexingInfo">
     <option name="cachedIndexableFilesCount" value="60" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,7 +66,7 @@
     "ignore.virus.scanning.warn.message": "true",
     "javascript.preferred.runtime.type.id": "node",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "D:/DEV/Desafios/rotten-potatoes/src/routes",
+    "last_opened_file_path": "D:/DEV/Desafios/rotten-potatoes",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -78,6 +91,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\DEV\Desafios\rotten-potatoes" />
       <recent name="D:\DEV\Desafios\rotten-potatoes\src\routes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -115,7 +129,7 @@
       <workItem from="1775603776450" duration="2049000" />
       <workItem from="1775606006208" duration="525000" />
       <workItem from="1775606548275" duration="1822000" />
-      <workItem from="1775609566502" duration="44636000" />
+      <workItem from="1775609566502" duration="49030000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add authentication context and update routing for login and home pages">
       <option name="closed" value="true" />
@@ -301,7 +315,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775858691312</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="feat: update Home component to include trending and continue watching movie carousels">
+      <option name="closed" value="true" />
+      <created>1775858752086</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1775858752086</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -341,7 +363,8 @@
     <MESSAGE value="feat: enhance CardImage component with improved styling and optional image prop" />
     <MESSAGE value="feat: add MovieCarrousel component for displaying movies in a carousel format" />
     <MESSAGE value="feat: add Carousel component with navigation and context for enhanced movie display" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add Carousel component with navigation and context for enhanced movie display" />
+    <MESSAGE value="feat: update Home component to include trending and continue watching movie carousels" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: update Home component to include trending and continue watching movie carousels" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
