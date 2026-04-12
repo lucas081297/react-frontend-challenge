@@ -14,7 +14,7 @@ export function getPersonDetails(id: number) {
     queryKey: ['person', id],
     queryFn: () =>
       fetch(
-        `${TMDBBaseUrl}/${path}/${id}?${ApiQueryLanguage}`,
+        `${TMDBBaseUrl}/${path}/${id}?${ApiQueryLanguage}&append_to_response=credits`,
         { headers: ApiHeaders },
       )
         .then((res) => res.json())
