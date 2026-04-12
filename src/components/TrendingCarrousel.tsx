@@ -1,7 +1,8 @@
-import { MovieCarrousel } from '#/components/ui/MovieCarrousel.tsx'
+import { MovieCarrousel } from '#/components/MovieCarrousel.tsx'
 import { getTrendingMovies } from '#/services/tmdb/trending/trending.ts'
 import { TimeWindow } from '#/models/timeWindow.ts'
 import { useState } from 'react'
+import { MovieCarrouselSkeleton } from '#/components/MovieCarrouselSkeleton.tsx'
 
 export function TrendingCarrousel() {
   const [page] = useState(1)
@@ -9,7 +10,7 @@ export function TrendingCarrousel() {
   const { data, isLoading, isError } = getTrendingMovies(page, TimeWindow.Day)
 
   if (isLoading) {
-    return <div>Carregando...</div>
+    return <MovieCarrouselSkeleton></MovieCarrouselSkeleton>
   }
 
   if (isError || !data) {

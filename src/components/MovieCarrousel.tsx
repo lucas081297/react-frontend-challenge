@@ -9,6 +9,7 @@ import { CardImage } from '#/components/CardImage.tsx'
 import type { TrendingMovie, TrendingTvShow } from '#/models/trending.ts'
 import { getPosterUrl } from '#/services/tmdb/images/images.ts'
 import { formatDateFromString } from '#/utils/dateFormatter.ts'
+import { PosterSize } from '#/models/tmdb.ts'
 
 export interface MovieCarrouselProps {
   movies: (TrendingMovie | TrendingTvShow)[]
@@ -35,7 +36,10 @@ export function MovieCarrousel({ movies }: MovieCarrouselProps) {
         <CarouselContent className="-ml-4">
           {movies.map((movie) => {
             const title = 'title' in movie ? movie.title : movie.name
-            const date = 'release_date' in movie ? movie.release_date : movie.first_air_date
+            const date =
+              'release_date' in movie
+                ? movie.release_date
+                : movie.first_air_date
 
             return (
               <CarouselItem
@@ -43,17 +47,16 @@ export function MovieCarrousel({ movies }: MovieCarrouselProps) {
                 className="relative pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
               >
                 <CardImage
+                  id={movie.id}
                   name={title}
                   type="Secondary"
                   average={movie.vote_average}
-                  image={getPosterUrl(movie.poster_path, 'w500')}
+                  image={getPosterUrl(movie.poster_path, PosterSize.Medium)}
                   description=""
                 />
                 <div className="flex flex-col gap-1">
                   <span>{title}</span>
-                  <span className="text-sm">
-                    {formatDateFromString(date)}
-                  </span>
+                  <span className="text-sm">{formatDateFromString(date)}</span>
                 </div>
               </CarouselItem>
             )

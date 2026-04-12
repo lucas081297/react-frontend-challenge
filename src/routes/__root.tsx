@@ -56,7 +56,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <title></title>
         <HeadContent />
       </head>
-      <body className="font-sans antialiased [overflow-wrap:anywhere] selection:bg-[rgba(79,184,178,0.24)]">
+      <body className="font-sans antialiased [overflow-wrap:anywhere]">
         {children}
         <TanStackDevtools
           config={{

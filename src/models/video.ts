@@ -13,4 +13,4 @@ export type Video = {
   id: string
 }
 
-export type VideoResponse = TMDBResponse<Video>
+export type VideoResponse = TMDBResponse<Video[]>

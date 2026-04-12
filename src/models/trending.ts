@@ -32,7 +32,7 @@ export type TrendingMovie = TrendingMedia & {
   video: boolean
 }
 
-export type TrendingMovieResponse = TMDBResponse<TrendingMovie>
+export type TrendingMovieResponse = TMDBResponse<TrendingMovie[]>
 
 /** Tipo específico para as tendencias de series*/
 export type TrendingTvShow = TrendingMedia & {
@@ -42,7 +42,7 @@ export type TrendingTvShow = TrendingMedia & {
   original_country: string[]
 }
 
-export type TrendingTvShowResponse = TMDBResponse<TrendingTvShow>
+export type TrendingTvShowResponse = TMDBResponse<TrendingTvShow[]>
 
 /** Tipo específico para as tendencias de pessoas*/
 export type TrendingPeople = TrendingBase & {
@@ -54,10 +54,10 @@ export type TrendingPeople = TrendingBase & {
   known_for: (TrendingMovie | TrendingTvShow)[]
 }
 
-export type TrendingPeopleResponse = TMDBResponse<TrendingPeople>
+export type TrendingPeopleResponse = TMDBResponse<TrendingPeople[]>
 
 export type TrendingAllResponse = TMDBResponse<
-  TrendingMovie | TrendingTvShow | TrendingPeople
+  (TrendingMovie | TrendingTvShow | TrendingPeople)[]
 >
 
 

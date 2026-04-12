@@ -2,42 +2,66 @@ import { Card } from '@/components/ui/card'
 import { ButtonIcon } from '#/components/ButtonIcon.tsx'
 import { Play, Plus, Star } from 'lucide-react'
 import { PotatoStamp } from '#/components/PotatoStamp.tsx'
+import { Link } from '@tanstack/react-router'
 
 interface CardImageProps {
-  average: number
+  id: number
+  average?: number
   name: string
   description: string
   image?: string
   type: 'Main' | 'Secondary'
+  redirectTo?: 'People' | 'Movies'
   video?: string
+  soon?: boolean
 }
 
 export function CardImage(props: CardImageProps) {
+  props.redirectTo ??= 'Movies'
   if (props.type === 'Secondary') {
     return (
-      <Card className="relative mx-auto w-full max-w-full py-0 border-none bg-transparent overflow-hidden group transition-all duration-300 hover:scale-105">
-        <div className="absolute inset-0 z-30 aspect-video bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
-        <img
-          src={props.image}
-          alt="Popularidade"
-          className="relative z-20 aspect-video w-full object-cover transition-all duration-300 group-hover:brightness-110"
-        />
-        <div className="absolute flex flex-row z-40 bottom-0 left-0 right-0 p-3 bg-linear-to-t font-headline font-bold text-white text-sm line-clamp-1 from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <Star className="inline-block mr-2 text-yellow-300 fill-current" />
-          {props.average}
-        </div>
-        <div className="absolute flex justify-end top-0 z-20 w-auto">
-          <PotatoStamp vote={props.average}></PotatoStamp>
-        </div>
-      </Card>
+      <Link
+        to={
+          props.redirectTo == 'Movies'
+            ? '/movies/$movieId'
+            : '/people/$personId'
+        }
+        params={
+          props.redirectTo == 'Movies'
+            ? { movieId: props.id.toString() }
+            : { personId: props.id.toString() }
+        }
+      >
+        <Card className="relative mx-auto w-full max-w-full py-0 border-none bg-transparent overflow-hidden group transition-all duration-300 hover:scale-105">
+          <div className="absolute inset-0 z-30 aspect-video bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
+          <img
+            src={props.image}
+            alt="Imagem"
+            className="relative z-20 aspect-video w-full object-cover transition-all duration-300 group-hover:brightness-110"
+          />
+          {props.average && (
+            <>
+              <div className="absolute flex flex-row z-40 bottom-0 left-0 right-0 p-3 bg-linear-to-t font-headline font-bold text-white text-sm line-clamp-1 from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <Star className="inline-block mr-2 text-yellow-300 fill-current" />
+                {props.average}
+              </div>
+              <div className="absolute flex justify-end top-0 z-20 w-auto">
+                <PotatoStamp vote={props.average}></PotatoStamp>
+              </div>
+            </>
+          )}
+        </Card>
+      </Link>
     )
   }
   return (
     <Card className="relative mx-auto w-full max-w-full py-0 border-none bg-transparent overflow-hidden">
       <div className="absolute inset-0 z-30 aspect-video bg-linear-to-r from-black/80 via-black/40 to-transparent" />
-      <span className="absolute right-0 z-40 text-white/90 text-lg md:text-md mt-4 mx-3 px-4 leading-relaxed drop-shadow-md line-clamp-3 rounded-full bg-black/60">
-        Em Breve...
-      </span>
+      {props.soon && (
+        <span className="absolute right-0 z-40 text-white/90 text-lg md:text-md mt-4 mx-3 px-4 leading-relaxed drop-shadow-md line-clamp-3 rounded-full bg-black/60">
+          Em Breve...
+        </span>
+      )}
       <img
         src={props.image}
         alt="Popularidade"

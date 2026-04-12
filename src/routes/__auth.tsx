@@ -16,7 +16,7 @@ export function AuthLayout() {
   const { queryClient } = Route.useRouteContext()
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex h-screen bg-surface-variant">
+      <div className="flex h-screen bg-background-primary">
         <SidebarProvider>
           <AppSidebar />
           <main className="flex-1 overflow-y-auto overflow-x-hidden">

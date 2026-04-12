@@ -1,6 +1,7 @@
-import { MovieCarrousel } from '#/components/ui/MovieCarrousel.tsx'
+import { MovieCarrousel } from '#/components/MovieCarrousel.tsx'
 import { useState } from 'react'
 import { getPopularMovies } from '#/services/tmdb/movie-lists/popular.ts'
+import { MovieCarrouselSkeleton } from '#/components/MovieCarrouselSkeleton.tsx'
 
 export function PopularCarrousel() {
   const [page] = useState(1)
@@ -8,7 +9,7 @@ export function PopularCarrousel() {
   const { data, isLoading, isError } = getPopularMovies(page)
 
   if (isLoading) {
-    return <div>Carregando...</div>
+      return <MovieCarrouselSkeleton></MovieCarrouselSkeleton>
   }
 
   if (isError || !data) {

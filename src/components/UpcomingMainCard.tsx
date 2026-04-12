@@ -6,17 +6,14 @@ import type { Video } from '#/models/video.ts'
 import { getVideos } from '#/services/tmdb/movies/videos.ts'
 import type { TrendingMovie } from '#/models/trending.ts'
 import { Skeleton } from '#/components/ui/skeleton.tsx'
+import { PosterSize } from '#/models/tmdb.ts'
 
 export function UpcomingMainCard() {
   const [page] = useState(1)
   const [validVideo, setValidVideo] = useState<Video | null>(null)
   const [upcomingMovie, setUpcomingMovie] = useState<TrendingMovie | null>(null)
 
-  const {
-    data,
-    isLoading,
-    isError,
-  } = getUpcomingMovies(page)
+  const { data, isLoading, isError } = getUpcomingMovies(page)
 
   useEffect(() => {
     if (data && data.results.length > 1) {
@@ -44,12 +41,14 @@ export function UpcomingMainCard() {
   return (
     <>
       <CardImage
+        id={upcomingMovie.id}
         type="Main"
         average={upcomingMovie.vote_average}
         name={upcomingMovie.title}
-        image={getPosterUrl(upcomingMovie.poster_path, 'w500')}
+        image={getPosterUrl(upcomingMovie.poster_path, PosterSize.Medium)}
         description={upcomingMovie.overview}
         video={validVideo?.key}
+        soon={true}
       />
     </>
   )

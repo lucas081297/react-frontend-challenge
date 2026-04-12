@@ -17,4 +17,4 @@ export interface TopRated {
   vote_count: number,
 }
 
-export type TopRatedResponse = TMDBResponse<TopRated>
+export type TopRatedResponse = TMDBResponse<TopRated[]>

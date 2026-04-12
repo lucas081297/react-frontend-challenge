@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { UpcomingMainCard } from '#/components/ui/UpcomingMainCard.tsx'
+import { UpcomingMainCard } from '#/components/UpcomingMainCard.tsx'
 import { TrendingCarrousel } from '#/components/TrendingCarrousel.tsx'
 import { PopularCarrousel } from '#/components/PopularCarrousel.tsx'
 
