@@ -4,35 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: add top-rated and popular movie carousels, extend TMDB models and services">
-      <change afterPath="$PROJECT_DIR$/src/components/CardImageSkeleton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/MovieCarrouselSkeleton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/movieDetails.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/__auth/movies/$movieId.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/tmdb/movies/details.ts" afterDir="false" />
+    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: add CardImageSkeleton, movie details route, and improve skeleton loading states&#10;&#10;- Introduce `CardImageSkeleton` for placeholder rendering in card components.&#10;- Implement `/movies/$movieId` route to display detailed movie information.&#10;- Optimize loading states with `MovieCarrouselSkeleton` in carousels.&#10;- Refactor `PosterSize` model from type to enum for stronger typing.&#10;- Update `getPosterUrl` to handle undefined paths gracefully.">
+      <change afterPath="$PROJECT_DIR$/src/models/person.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/__auth/people/$personId.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/services/tmdb/people/person.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/moneyFormatter.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/timeFormatter.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/youtube.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CardImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CardImage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PopularCarrousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopularCarrousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TrendingCarrousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TrendingCarrousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/MovieCarrousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MovieCarrousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/UpcomingMainCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UpcomingMainCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/tmdb.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/tmdb.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/topRated.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/topRated.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/trending.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/trending.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/video.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/video.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routeTree.gen.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routeTree.gen.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/__auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/__auth/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth/home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/__root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__root.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/tmdb/globals.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/tmdb/globals.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/tmdb/images/images.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/tmdb/images/images.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/tmdb/movie-lists/popular.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/tmdb/movie-lists/popular.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/tmdb/movie-lists/upcoming.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/tmdb/movie-lists/upcoming.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/__auth/movies/$movieId.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth/movies/$movieId.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +66,7 @@
     "ignore.virus.scanning.warn.message": "true",
     "javascript.preferred.runtime.type.id": "node",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "D:/DEV/Desafios/rotten-potatoes/src/services/tmdb",
+    "last_opened_file_path": "D:/DEV/Desafios/rotten-potatoes/src/routes/__auth",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -112,11 +91,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\DEV\Desafios\rotten-potatoes\src\routes\__auth" />
       <recent name="D:\DEV\Desafios\rotten-potatoes\src\services\tmdb" />
       <recent name="D:\DEV\Desafios\rotten-potatoes\src\utils" />
       <recent name="D:\DEV\Desafios\rotten-potatoes\src\models" />
       <recent name="D:\DEV\Desafios\rotten-potatoes\src\services\tmdb\movies" />
-      <recent name="D:\DEV\Desafios\rotten-potatoes\src\routes\__auth\movies" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\DEV\Desafios\rotten-potatoes\src\components" />
@@ -156,7 +135,7 @@
       <workItem from="1775603776450" duration="2049000" />
       <workItem from="1775606006208" duration="525000" />
       <workItem from="1775606548275" duration="1822000" />
-      <workItem from="1775609566502" duration="113415000" />
+      <workItem from="1775609566502" duration="115178000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add authentication context and update routing for login and home pages">
       <option name="closed" value="true" />
@@ -462,7 +441,23 @@
       <option name="project" value="LOCAL" />
       <updated>1775976015637</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="feat: add YouTube URL utilities, time formatter, new route, and background color update&#10;&#10;- Add `getYouTubeEmbedUrl` and `getYouTubeUrl` utility functions.&#10;- Create a time formatting utility for minutes to hours and minutes.&#10;- Introduce a new `/movies/$movieId` route in the route tree.&#10;- Update background color variable in CSS for a more consistent theme. &#10;- Include `ApiQueryLanguage` constant for TMDB API language configuration.">
+      <option name="closed" value="true" />
+      <created>1776024076799</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1776024076799</updated>
+    </task>
+    <task id="LOCAL-00040" summary="feat: add CardImageSkeleton, movie details route, and improve skeleton loading states&#10;&#10;- Introduce `CardImageSkeleton` for placeholder rendering in card components.&#10;- Implement `/movies/$movieId` route to display detailed movie information.&#10;- Optimize loading states with `MovieCarrouselSkeleton` in carousels.&#10;- Refactor `PosterSize` model from type to enum for stronger typing.&#10;- Update `getPosterUrl` to handle undefined paths gracefully.">
+      <option name="closed" value="true" />
+      <created>1776024119712</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1776024119712</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -480,8 +475,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: add CardImage component for displaying event cover with interactive buttons" />
-    <MESSAGE value="feat: add ButtonIcon component for rendering buttons with icons and labels" />
     <MESSAGE value="feat: add WatchList route component for authentication flow" />
     <MESSAGE value="feat: add Badge component for customizable display with variants" />
     <MESSAGE value="feat: enhance ButtonIcon component with customizable className and improved styling" />
@@ -505,7 +498,9 @@
     <MESSAGE value="feat: add upcoming movies fetching and display component" />
     <MESSAGE value="feat: implement popular and trending movie carrousels with data fetching" />
     <MESSAGE value="feat: add top-rated and popular movie carousels, extend TMDB models and services" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add top-rated and popular movie carousels, extend TMDB models and services" />
+    <MESSAGE value="feat: add YouTube URL utilities, time formatter, new route, and background color update&#10;&#10;- Add `getYouTubeEmbedUrl` and `getYouTubeUrl` utility functions.&#10;- Create a time formatting utility for minutes to hours and minutes.&#10;- Introduce a new `/movies/$movieId` route in the route tree.&#10;- Update background color variable in CSS for a more consistent theme. &#10;- Include `ApiQueryLanguage` constant for TMDB API language configuration." />
+    <MESSAGE value="feat: add CardImageSkeleton, movie details route, and improve skeleton loading states&#10;&#10;- Introduce `CardImageSkeleton` for placeholder rendering in card components.&#10;- Implement `/movies/$movieId` route to display detailed movie information.&#10;- Optimize loading states with `MovieCarrouselSkeleton` in carousels.&#10;- Refactor `PosterSize` model from type to enum for stronger typing.&#10;- Update `getPosterUrl` to handle undefined paths gracefully." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add CardImageSkeleton, movie details route, and improve skeleton loading states&#10;&#10;- Introduce `CardImageSkeleton` for placeholder rendering in card components.&#10;- Implement `/movies/$movieId` route to display detailed movie information.&#10;- Optimize loading states with `MovieCarrouselSkeleton` in carousels.&#10;- Refactor `PosterSize` model from type to enum for stronger typing.&#10;- Update `getPosterUrl` to handle undefined paths gracefully." />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

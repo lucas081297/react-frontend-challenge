@@ -109,6 +109,7 @@ function MovieInfo() {
                       <CardImage
                         id={c.id ?? 0}
                         name={c.name ?? ''}
+                        redirectTo={'People'}
                         type="Secondary"
                         image={getPosterUrl(
                           c.profile_path,

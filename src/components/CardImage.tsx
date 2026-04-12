@@ -17,17 +17,13 @@ interface CardImageProps {
 }
 
 export function CardImage(props: CardImageProps) {
-  props.redirectTo ??= 'Movies'
+  const redirect = props.redirectTo ?? 'Movies'
   if (props.type === 'Secondary') {
     return (
       <Link
-        to={
-          props.redirectTo == 'Movies'
-            ? '/movies/$movieId'
-            : '/people/$personId'
-        }
+        to={redirect == 'Movies' ? '/movies/$movieId' : '/people/$personId'}
         params={
-          props.redirectTo == 'Movies'
+          redirect == 'Movies'
             ? { movieId: props.id.toString() }
             : { personId: props.id.toString() }
         }
@@ -71,25 +67,27 @@ export function CardImage(props: CardImageProps) {
         <span className="font-headline font-extrabold tracking-tighter text-on-surface-primary leading-tight text-5xl md:text-7xl drop-shadow-lg">
           {props.name}
         </span>
-        <span className="text-white/90 text-lg md:text-xl mt-4 leading-relaxed drop-shadow-md line-clamp-3">
+        <span style={redirect != 'People' ? {lineClamp: 3} : {}} className="text-white/90 text-lg md:text-xl mt-4 leading-relaxed drop-shadow-md">
           {props.description}
         </span>
-        <div className="flex flex-row gap-4 mt-8">
-          <ButtonIcon
-            hidden={!props.video}
-            className="bg-on-surface-primary text-black hover:bg-on-surface-primary/90 border-none"
-            icon={<Play fill="currentColor" />}
-            label="Assistir o trailer"
-            onClick={() => {
-              window.open(props.video, '_blank')
-            }}
-          />
-          <ButtonIcon
-            className="bg-surface-variant/50 backdrop-blur-md text-white border-white/20 hover:bg-surface-variant/70"
-            icon={<Plus />}
-            label="Minha Lista"
-          />
-        </div>
+        {redirect != 'People' && (
+          <div className="flex flex-row gap-4 mt-8">
+            <ButtonIcon
+              hidden={!props.video}
+              className="bg-on-surface-primary text-black hover:bg-on-surface-primary/90 border-none"
+              icon={<Play fill="currentColor" />}
+              label="Assistir o trailer"
+              onClick={() => {
+                window.open(props.video, '_blank')
+              }}
+            />
+            <ButtonIcon
+              className="bg-surface-variant/50 backdrop-blur-md text-white border-white/20 hover:bg-surface-variant/70"
+              icon={<Plus />}
+              label="Minha Lista"
+            />
+          </div>
+        )}
       </div>
     </Card>
   )

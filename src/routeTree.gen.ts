@@ -15,6 +15,7 @@ import { Route as _authRouteImport } from './routes/__auth'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as _authWatchListRouteImport } from './routes/__auth/watchList'
 import { Route as _authHomeRouteImport } from './routes/__auth/home'
+import { Route as _authPeoplePersonIdRouteImport } from './routes/__auth/people/$personId'
 import { Route as _authMoviesMovieIdRouteImport } from './routes/__auth/movies/$movieId'
 
 const LoginRoute = LoginRouteImport.update({
@@ -46,6 +47,11 @@ const _authHomeRoute = _authHomeRouteImport.update({
   path: '/home',
   getParentRoute: () => _authRoute,
 } as any)
+const _authPeoplePersonIdRoute = _authPeoplePersonIdRouteImport.update({
+  id: '/people/$personId',
+  path: '/people/$personId',
+  getParentRoute: () => _authRoute,
+} as any)
 const _authMoviesMovieIdRoute = _authMoviesMovieIdRouteImport.update({
   id: '/movies/$movieId',
   path: '/movies/$movieId',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/home': typeof _authHomeRoute
   '/watchList': typeof _authWatchListRoute
   '/movies/$movieId': typeof _authMoviesMovieIdRoute
+  '/people/$personId': typeof _authPeoplePersonIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/home': typeof _authHomeRoute
   '/watchList': typeof _authWatchListRoute
   '/movies/$movieId': typeof _authMoviesMovieIdRoute
+  '/people/$personId': typeof _authPeoplePersonIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/__auth/home': typeof _authHomeRoute
   '/__auth/watchList': typeof _authWatchListRoute
   '/__auth/movies/$movieId': typeof _authMoviesMovieIdRoute
+  '/__auth/people/$personId': typeof _authPeoplePersonIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -87,8 +96,16 @@ export interface FileRouteTypes {
     | '/home'
     | '/watchList'
     | '/movies/$movieId'
+    | '/people/$personId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/login' | '/home' | '/watchList' | '/movies/$movieId'
+  to:
+    | '/'
+    | '/about'
+    | '/login'
+    | '/home'
+    | '/watchList'
+    | '/movies/$movieId'
+    | '/people/$personId'
   id:
     | '__root__'
     | '/'
@@ -98,6 +115,7 @@ export interface FileRouteTypes {
     | '/__auth/home'
     | '/__auth/watchList'
     | '/__auth/movies/$movieId'
+    | '/__auth/people/$personId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -151,6 +169,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof _authHomeRouteImport
       parentRoute: typeof _authRoute
     }
+    '/__auth/people/$personId': {
+      id: '/__auth/people/$personId'
+      path: '/people/$personId'
+      fullPath: '/people/$personId'
+      preLoaderRoute: typeof _authPeoplePersonIdRouteImport
+      parentRoute: typeof _authRoute
+    }
     '/__auth/movies/$movieId': {
       id: '/__auth/movies/$movieId'
       path: '/movies/$movieId'
@@ -165,12 +190,14 @@ interface _authRouteChildren {
   _authHomeRoute: typeof _authHomeRoute
   _authWatchListRoute: typeof _authWatchListRoute
   _authMoviesMovieIdRoute: typeof _authMoviesMovieIdRoute
+  _authPeoplePersonIdRoute: typeof _authPeoplePersonIdRoute
 }
 
 const _authRouteChildren: _authRouteChildren = {
   _authHomeRoute: _authHomeRoute,
   _authWatchListRoute: _authWatchListRoute,
   _authMoviesMovieIdRoute: _authMoviesMovieIdRoute,
+  _authPeoplePersonIdRoute: _authPeoplePersonIdRoute,
 }
 
 const _authRouteWithChildren = _authRoute._addFileChildren(_authRouteChildren)
