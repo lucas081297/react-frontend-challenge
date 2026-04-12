@@ -49,9 +49,10 @@ export function MovieCarrousel({ movies }: MovieCarrouselProps) {
                 <CardImage
                   id={movie.id}
                   name={title}
+                  redirectTo={'Movies'}
                   type="Secondary"
                   average={movie.vote_average}
-                  image={getPosterUrl(movie.poster_path, PosterSize.Medium)}
+                  image={getPosterUrl(movie.poster_path, PosterSize.Large)}
                   description=""
                 />
                 <div className="flex flex-col gap-1">

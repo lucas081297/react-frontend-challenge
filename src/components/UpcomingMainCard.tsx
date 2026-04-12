@@ -45,7 +45,7 @@ export function UpcomingMainCard() {
         type="Main"
         average={upcomingMovie.vote_average}
         name={upcomingMovie.title}
-        image={getPosterUrl(upcomingMovie.poster_path, PosterSize.Medium)}
+        image={getPosterUrl(upcomingMovie.poster_path, PosterSize.Original)}
         description={upcomingMovie.overview}
         video={validVideo?.key}
         soon={true}
