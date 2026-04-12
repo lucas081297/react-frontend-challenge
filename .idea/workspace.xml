@@ -4,14 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: update Home component to include trending and continue watching movie carousels">
-      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/movie.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/tmdb.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/movies/movies.ts" afterDir="false" />
+    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: add types for trending movies, TV shows, and people responses">
+      <change afterPath="$PROJECT_DIR$/src/components/PopularCarrousel.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/PotatoStamp.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/TrendingCarrousel.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/UpcomingMainCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/genres.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/movieLists.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/timeWindow.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/topRated.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/video.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/tmdb/genres/genres.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/tmdb/globals.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/tmdb/images/images.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/tmdb/movie-lists/popular.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/tmdb/movie-lists/upcoming.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/tmdb/movies/videos.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/dateFormatter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eslint.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/eslint.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo-nobg.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/logo-nobg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CardImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CardImage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/MovieCarrousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/MovieCarrousel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/movie.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/tmdb.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/tmdb.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/trending.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/trending.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/__auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/__auth/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth/home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/__root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__root.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/movies/movies.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/tmdb/trending/trending.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +49,7 @@
     </persistenceIdMap>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="60" />
+    <option name="cachedIndexableFilesCount" value="94" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -66,7 +91,7 @@
     "ignore.virus.scanning.warn.message": "true",
     "javascript.preferred.runtime.type.id": "node",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "D:/DEV/Desafios/rotten-potatoes",
+    "last_opened_file_path": "D:/DEV/Desafios/rotten-potatoes/src/components",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -91,10 +116,16 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\DEV\Desafios\rotten-potatoes\src\components" />
+      <recent name="D:\DEV\Desafios\rotten-potatoes\src\services\tmdb" />
+      <recent name="D:\DEV\Desafios\rotten-potatoes\src\services\tmdb\movie-lists" />
       <recent name="D:\DEV\Desafios\rotten-potatoes" />
       <recent name="D:\DEV\Desafios\rotten-potatoes\src\routes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\DEV\Desafios\rotten-potatoes\public\selos" />
+      <recent name="D:\DEV\Desafios\rotten-potatoes\src\models" />
+      <recent name="D:\DEV\Desafios\rotten-potatoes\src\services\tmdb" />
       <recent name="D:\DEV\Desafios\rotten-potatoes\public" />
       <recent name="D:\DEV\Desafios\rotten-potatoes\src\routes\auth" />
     </key>
@@ -129,7 +160,7 @@
       <workItem from="1775603776450" duration="2049000" />
       <workItem from="1775606006208" duration="525000" />
       <workItem from="1775606548275" duration="1822000" />
-      <workItem from="1775609566502" duration="49030000" />
+      <workItem from="1775609566502" duration="92999000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add authentication context and update routing for login and home pages">
       <option name="closed" value="true" />
@@ -323,7 +354,47 @@
       <option name="project" value="LOCAL" />
       <updated>1775858752086</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="feat: add Toaster component for customizable notifications with themed icons">
+      <option name="closed" value="true" />
+      <created>1775876969704</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1775876969704</updated>
+    </task>
+    <task id="LOCAL-00026" summary="feat: add next-themes and sonner packages for improved theming and notifications">
+      <option name="closed" value="true" />
+      <created>1775876989511</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1775876989511</updated>
+    </task>
+    <task id="LOCAL-00027" summary="feat: add .env.example file with placeholder for TMDB API key">
+      <option name="closed" value="true" />
+      <created>1775877019962</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1775877019962</updated>
+    </task>
+    <task id="LOCAL-00028" summary="feat: add movie and tmdb response models, and implement trending movies query">
+      <option name="closed" value="true" />
+      <created>1775877029675</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1775877029675</updated>
+    </task>
+    <task id="LOCAL-00029" summary="feat: add types for trending movies, TV shows, and people responses">
+      <option name="closed" value="true" />
+      <created>1775928154600</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1775928154600</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -341,9 +412,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: add authentication context and update routing for login and home pages" />
-    <MESSAGE value="feat: enhance styles with new font and custom animations" />
-    <MESSAGE value="feat: add react-icons package for enhanced icon support" />
     <MESSAGE value="feat: add sidebar component with navigation links and logo" />
     <MESSAGE value="feat: update workspace configuration with recent file changes and project settings" />
     <MESSAGE value="feat: add authentication routes and layout for login and home pages" />
@@ -364,7 +432,12 @@
     <MESSAGE value="feat: add MovieCarrousel component for displaying movies in a carousel format" />
     <MESSAGE value="feat: add Carousel component with navigation and context for enhanced movie display" />
     <MESSAGE value="feat: update Home component to include trending and continue watching movie carousels" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: update Home component to include trending and continue watching movie carousels" />
+    <MESSAGE value="feat: add Toaster component for customizable notifications with themed icons" />
+    <MESSAGE value="feat: add next-themes and sonner packages for improved theming and notifications" />
+    <MESSAGE value="feat: add .env.example file with placeholder for TMDB API key" />
+    <MESSAGE value="feat: add movie and tmdb response models, and implement trending movies query" />
+    <MESSAGE value="feat: add types for trending movies, TV shows, and people responses" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add types for trending movies, TV shows, and people responses" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

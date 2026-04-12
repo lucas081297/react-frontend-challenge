@@ -4,14 +4,27 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import appCss from '../styles.css?url'
 import * as React from 'react'
+import { QueryClient } from '@tanstack/query-core'
 
 interface MyRouterContext {
   isAuthenticated: boolean
+  queryClient: any
 }
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 minutos de cache padrão
+      retry: 1,
+    },
+  },
+})
 
 export const Route = createRootRoute({
   context: (): MyRouterContext => ({
     isAuthenticated: true,
+    queryClient
+
   }),
   head: () => ({
     meta: [
