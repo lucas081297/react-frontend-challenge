@@ -2,8 +2,24 @@ import { MovieCarrousel } from '#/components/MovieCarrousel.tsx'
 import { useState } from 'react'
 import { getPopularMovies } from '#/services/tmdb/movie-lists/popular.ts'
 import { MovieCarrouselSkeleton } from '#/components/MovieCarrouselSkeleton.tsx'
+import { useWatchListStore } from '#/store/watchList.store.ts'
 
 export function PopularCarrousel() {
+
+  const {addToWatchList, removeFromWatchList} = useWatchListStore()
+
+  const handleAddToWatchList = (movieId: number) => {
+    if(!data) return
+    const finded = data.results.find(movie => movie.id === movieId)
+    if(finded) {
+      addToWatchList(finded)
+    }
+  }
+
+  const handleRemoveFromWatchList = (movieId: number) => {
+    removeFromWatchList(movieId)
+  }
+
   const [page] = useState(1)
 
   const { data, isLoading, isError } = getPopularMovies(page)
@@ -27,7 +43,7 @@ export function PopularCarrousel() {
             Ver tudo
           </button>
         </div>
-        <MovieCarrousel movies={data.results} />
+        <MovieCarrousel movies={data.results} addToWatchList={handleAddToWatchList} removeFromWatchList={handleRemoveFromWatchList} />
       </section>
     </>
   )

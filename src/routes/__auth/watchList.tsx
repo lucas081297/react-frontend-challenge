@@ -1,13 +1,27 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { Badge } from '#/components/ui/badge.tsx'
+import { MovieCarrousel } from '#/components/MovieCarrousel.tsx'
+import { useWatchListStore } from '#/store/watchList.store.ts'
 
 export const Route = createFileRoute('/__auth/watchList')({
   component: WatchList,
 })
 
 function WatchList() {
-  return (
-    <section>
 
+  const {watchList} = useWatchListStore()
+
+  return (
+    <section className="p-6">
+      <div className="flex flex-col justify-between gap-6">
+        <div className="flex flex-col gap-2">
+          <h1 className="text-4xl font-extrabold">Minha Lista</h1>
+          <Badge>12 Filmes Salvos</Badge>
+        </div>
+        <div>
+          <MovieCarrousel movies={watchList} />
+        </div>
+      </div>
     </section>
   )
 }

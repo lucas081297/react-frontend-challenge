@@ -4,10 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: append credits to person details and display popular movies&#10;&#10;- Update TMDB person service to include `credits` in the response.&#10;- Extend the `Person` model to include `credits` with cast details.&#10;- Add a `MovieCarrousel` component to the person details route for displaying popular movies.">
+    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: update poster sizes for better image quality in movie components&#10;&#10;- Change `PosterSize` in `UpcomingMainCard` to `Original` for higher resolution images.&#10;- Update `PosterSize` in `MovieCarrousel` to `Large` and add redirection to the movies section.">
+      <change afterPath="$PROJECT_DIR$/src/models/watchList.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/auth.store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/settings.store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/watchList.store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CardImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CardImage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MovieCarrousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MovieCarrousel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PopularCarrousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopularCarrousel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TrendingCarrousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TrendingCarrousel.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UpcomingMainCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UpcomingMainCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/__auth/watchList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth/watchList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +141,7 @@
       <workItem from="1775603776450" duration="2049000" />
       <workItem from="1775606006208" duration="525000" />
       <workItem from="1775606548275" duration="1822000" />
-      <workItem from="1775609566502" duration="116498000" />
+      <workItem from="1775609566502" duration="120776000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add authentication context and update routing for login and home pages">
       <option name="closed" value="true" />
@@ -469,7 +479,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776026316919</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="feat: update poster sizes for better image quality in movie components&#10;&#10;- Change `PosterSize` in `UpcomingMainCard` to `Original` for higher resolution images.&#10;- Update `PosterSize` in `MovieCarrousel` to `Large` and add redirection to the movies section.">
+      <option name="closed" value="true" />
+      <created>1776026837867</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1776026837867</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -487,7 +505,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: enhance ButtonIcon component with customizable className and improved styling" />
     <MESSAGE value="feat: update AuthLayout component with improved styling and structure" />
     <MESSAGE value="feat: add embla-carousel-react dependency for carousel functionality" />
     <MESSAGE value="feat: enhance CardImage component with improved styling and optional image prop" />
@@ -512,7 +529,8 @@
     <MESSAGE value="feat: add CardImageSkeleton, movie details route, and improve skeleton loading states&#10;&#10;- Introduce `CardImageSkeleton` for placeholder rendering in card components.&#10;- Implement `/movies/$movieId` route to display detailed movie information.&#10;- Optimize loading states with `MovieCarrouselSkeleton` in carousels.&#10;- Refactor `PosterSize` model from type to enum for stronger typing.&#10;- Update `getPosterUrl` to handle undefined paths gracefully." />
     <MESSAGE value="feat: add person details route and TMDB person service&#10;&#10;- Implement `/people/$personId` route for displaying detailed information about a person.&#10;- Add `getPersonDetails` function in TMDB person service using React Query.&#10;- Create `Person` model to define the structure of person data.&#10;- Update `CardImage` to support redirection to the person details route." />
     <MESSAGE value="feat: append credits to person details and display popular movies&#10;&#10;- Update TMDB person service to include `credits` in the response.&#10;- Extend the `Person` model to include `credits` with cast details.&#10;- Add a `MovieCarrousel` component to the person details route for displaying popular movies." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: append credits to person details and display popular movies&#10;&#10;- Update TMDB person service to include `credits` in the response.&#10;- Extend the `Person` model to include `credits` with cast details.&#10;- Add a `MovieCarrousel` component to the person details route for displaying popular movies." />
+    <MESSAGE value="feat: update poster sizes for better image quality in movie components&#10;&#10;- Change `PosterSize` in `UpcomingMainCard` to `Original` for higher resolution images.&#10;- Update `PosterSize` in `MovieCarrousel` to `Large` and add redirection to the movies section." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: update poster sizes for better image quality in movie components&#10;&#10;- Change `PosterSize` in `UpcomingMainCard` to `Original` for higher resolution images.&#10;- Update `PosterSize` in `MovieCarrousel` to `Large` and add redirection to the movies section." />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

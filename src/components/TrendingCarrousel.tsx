@@ -3,11 +3,25 @@ import { getTrendingMovies } from '#/services/tmdb/trending/trending.ts'
 import { TimeWindow } from '#/models/timeWindow.ts'
 import { useState } from 'react'
 import { MovieCarrouselSkeleton } from '#/components/MovieCarrouselSkeleton.tsx'
+import { useWatchListStore } from '#/store/watchList.store.ts'
 
 export function TrendingCarrousel() {
+  const { addToWatchList, removeFromWatchList } = useWatchListStore()
   const [page] = useState(1)
 
   const { data, isLoading, isError } = getTrendingMovies(page, TimeWindow.Day)
+
+  const handleAddToWatchList = (movieId: number) => {
+    if (!data) return
+    const finded = data.results.find((movie) => movie.id === movieId)
+    if (finded) {
+      addToWatchList(finded)
+    }
+  }
+
+  const handleRemoveFromWatchList = (movieId: number) => {
+    removeFromWatchList(movieId)
+  }
 
   if (isLoading) {
     return <MovieCarrouselSkeleton></MovieCarrouselSkeleton>
@@ -28,7 +42,11 @@ export function TrendingCarrousel() {
             Ver tudo
           </button>
         </div>
-        <MovieCarrousel movies={data.results} />
+        <MovieCarrousel
+          movies={data.results}
+          addToWatchList={handleAddToWatchList}
+          removeFromWatchList={handleRemoveFromWatchList}
+        />
       </section>
     </>
   )

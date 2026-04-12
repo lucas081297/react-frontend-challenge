@@ -1,8 +1,9 @@
 import { Card } from '@/components/ui/card'
 import { ButtonIcon } from '#/components/ButtonIcon.tsx'
-import { Play, Plus, Star } from 'lucide-react'
+import { Play, Plus, Star, Trash } from 'lucide-react'
 import { PotatoStamp } from '#/components/PotatoStamp.tsx'
 import { Link } from '@tanstack/react-router'
+import { useWatchListStore } from '#/store/watchList.store.ts'
 
 interface CardImageProps {
   id: number
@@ -14,10 +15,14 @@ interface CardImageProps {
   redirectTo?: 'People' | 'Movies'
   video?: string
   soon?: boolean
+  addToWatchList?: (movieId: number) => void
+  removeFromWatchList?: (movieId: number) => void
 }
 
 export function CardImage(props: CardImageProps) {
   const redirect = props.redirectTo ?? 'Movies'
+  const { watchList } = useWatchListStore()
+
   if (props.type === 'Secondary') {
     return (
       <Link
@@ -81,11 +86,24 @@ export function CardImage(props: CardImageProps) {
                 window.open(props.video, '_blank')
               }}
             />
-            <ButtonIcon
+            {watchList.some((movie) => movie.id === props.id) ? (
+              <ButtonIcon
+              className="bg-surface-variant/50 backdrop-blur-md text-white border-white/20 hover:bg-surface-variant/70"
+              icon={<Trash />}
+              label="Minha Lista"
+              onClick={() => {
+              props.removeFromWatchList?.(props.id)
+            }}
+              />
+            )
+            :(<ButtonIcon
               className="bg-surface-variant/50 backdrop-blur-md text-white border-white/20 hover:bg-surface-variant/70"
               icon={<Plus />}
               label="Minha Lista"
-            />
+              onClick={() => {
+                props.addToWatchList?.(props.id)
+              }}
+            />)}
           </div>
         )}
       </div>

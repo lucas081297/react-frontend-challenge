@@ -13,9 +13,11 @@ import { PosterSize } from '#/models/tmdb.ts'
 
 export interface MovieCarrouselProps {
   movies: (TrendingMovie | TrendingTvShow)[]
+  addToWatchList?: (movieId: number) => void
+  removeFromWatchList?: (movieId: number) => void
 }
 
-export function MovieCarrousel({ movies }: MovieCarrouselProps) {
+export function MovieCarrousel({ movies, addToWatchList, removeFromWatchList }: MovieCarrouselProps) {
   if (movies.length === 0) {
     return (
       <div className="flex items-center justify-center h-48 bg-surface-variant/20 rounded-xl border border-white/5">
@@ -54,6 +56,8 @@ export function MovieCarrousel({ movies }: MovieCarrouselProps) {
                   average={movie.vote_average}
                   image={getPosterUrl(movie.poster_path, PosterSize.Large)}
                   description=""
+                  addToWatchList={addToWatchList}
+                  removeFromWatchList={removeFromWatchList}
                 />
                 <div className="flex flex-col gap-1">
                   <span>{title}</span>
