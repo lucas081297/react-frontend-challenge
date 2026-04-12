@@ -1,6 +1,10 @@
 import type { TMDBResponse } from '#/models/tmdb.ts'
 
-export type TrendingType = 'movie' | 'person' | 'tv'
+export enum TrendingType {
+  Movie = 'movie',
+  TvShow = 'tv',
+  People = 'person'
+}
 
 /** Tipo comum para todos os tipos de tendencias*/
 export type TrendingBase = {
@@ -12,7 +16,6 @@ export type TrendingBase = {
 
 /** Tipo comum para todos os tipos de tendencias de filmes e series*/
 export type TrendingMedia = TrendingBase & {
-  release_date: string
   original_language: string
   overview: string
   poster_path: string
@@ -29,7 +32,7 @@ export type TrendingMovie = TrendingMedia & {
   video: boolean
 }
 
-export type TrendingAllResponse = TMDBResponse<TrendingMovie>
+export type TrendingMovieResponse = TMDBResponse<TrendingMovie>
 
 /** Tipo específico para as tendencias de series*/
 export type TrendingTvShow = TrendingMedia & {
@@ -52,5 +55,9 @@ export type TrendingPeople = TrendingBase & {
 }
 
 export type TrendingPeopleResponse = TMDBResponse<TrendingPeople>
+
+export type TrendingAllResponse = TMDBResponse<
+  TrendingMovie | TrendingTvShow | TrendingPeople
+>
 
 

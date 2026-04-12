@@ -6,15 +6,12 @@ import {
   CarouselPrevious,
 } from '#/components/ui/carousel.tsx'
 import { CardImage } from '#/components/CardImage.tsx'
-
-export interface MovieData {
-  name: string
-  image: string
-  description: string
-}
+import type { TrendingMovie, TrendingTvShow } from '#/models/trending.ts'
+import { getPosterUrl } from '#/services/tmdb/images/images.ts'
+import { formatDateFromString } from '#/utils/dateFormatter.ts'
 
 export interface MovieCarrouselProps {
-  movies: MovieData[]
+  movies: (TrendingMovie | TrendingTvShow)[]
 }
 
 export function MovieCarrousel({ movies }: MovieCarrouselProps) {
@@ -36,19 +33,31 @@ export function MovieCarrousel({ movies }: MovieCarrouselProps) {
         className="w-full"
       >
         <CarouselContent className="-ml-4">
-          {movies.map((movie) => (
-            <CarouselItem
-              key={movie.name}
-              className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
-            >
-              <CardImage
-                type="Secondary"
-                name={movie.name}
-                image={movie.image}
-                description={movie.description}
-              />
-            </CarouselItem>
-          ))}
+          {movies.map((movie) => {
+            const title = 'title' in movie ? movie.title : movie.name
+            const date = 'release_date' in movie ? movie.release_date : movie.first_air_date
+
+            return (
+              <CarouselItem
+                key={movie.id}
+                className="relative pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+              >
+                <CardImage
+                  name={title}
+                  type="Secondary"
+                  average={movie.vote_average}
+                  image={getPosterUrl(movie.poster_path, 'w500')}
+                  description=""
+                />
+                <div className="flex flex-col gap-1">
+                  <span>{title}</span>
+                  <span className="text-sm">
+                    {formatDateFromString(date)}
+                  </span>
+                </div>
+              </CarouselItem>
+            )
+          })}
         </CarouselContent>
         <CarouselPrevious className="left-0 bg-surface-variant/50 border-none text-white hover:bg-on-surface-primary hover:text-black transition-colors" />
         <CarouselNext className="right-0 bg-surface-variant/50 border-none text-white hover:bg-on-surface-primary hover:text-black transition-colors" />
