@@ -13,6 +13,7 @@
   --color-surface-variant: #353535;
   --color-on-surface-primary: #F3CA52;
   --color-on-surface-secundary: #d0c5af;
+  --color-background-primary: #131313;
 
   /*Fontes*/
   --font-headline: "Epilogue", sans-serif;
@@ -150,7 +151,7 @@ body {
   margin: 0;
   color: var(--sea-ink);
   font-family: var(--font-sans);
-  background-color: var(--color-surface-variant);
+  background-color: var(--color-background-primary);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

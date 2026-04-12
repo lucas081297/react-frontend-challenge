@@ -7,3 +7,5 @@ export const ApiHeaders: HeadersInit = {
   'Authorization': `Bearer ${TMDBApiKey}`,
   'accept': 'application/json',
 }
+
+export const ApiQueryLanguage = 'language=pt-BR'
