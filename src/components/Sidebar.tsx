@@ -1,4 +1,11 @@
-import { BookMarkedIcon, HomeIcon, type LucideIcon, Settings } from 'lucide-react'
+import {
+  BookMarkedIcon,
+  Compass,
+  HomeIcon,
+  type LucideIcon,
+  LogOut,
+  User,
+} from 'lucide-react'
 import {
   Sidebar,
   SidebarContent,
@@ -6,7 +13,17 @@ import {
   SidebarGroup,
   SidebarHeader,
 } from '@/components/ui/sidebar'
-import { Link } from '@tanstack/react-router'
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet'
+import { Button } from '@/components/ui/button'
+import { Link, useNavigate } from '@tanstack/react-router'
+import { removeToken } from '#/store/cookie.store.ts'
+import { toast } from 'sonner'
 
 interface SideBarPath {
   name: string
@@ -15,10 +32,18 @@ interface SideBarPath {
 }
 
 export default function AppSidebar() {
+  const navigate = useNavigate()
   const sideBarPaths: SideBarPath[] = [
     { name: 'Home', path: '/home', icon: HomeIcon },
+    { name: 'Explorar', path: '/explore', icon: Compass },
     { name: 'Minha Lista', path: '/watchlist', icon: BookMarkedIcon },
   ]
+
+  const handleLogout = () => {
+    removeToken()
+    toast.success('Você saiu da conta')
+    navigate({ to: '/login', replace: true })
+  }
 
   return (
     <Sidebar className="border-r border-white/5 shadow-2xl">
@@ -42,12 +67,45 @@ export default function AppSidebar() {
         })}
       </SidebarContent>
       <SidebarFooter className="bg-surface-variant px-0">
-        <Link to="/home">
-          <div className="flex flex-row gap-2 mx-2 px-1 py-3 rounded hover:bg-on-surface-primary">
-            <Settings/>
-            <span>Configurações</span>
-          </div>
-        </Link>
+        <Sheet>
+          <SheetTrigger asChild>
+            <button className="flex flex-row items-center gap-2 mx-2 px-1 py-3 rounded hover:bg-on-surface-primary text-white/60">
+              <div className="w-8 h-8 rounded-full bg-on-surface-primary/20 flex items-center justify-center">
+                <User size={18} className="text-white" />
+              </div>
+              <span className="text-sm">Conta</span>
+            </button>
+          </SheetTrigger>
+          <SheetContent
+            side="right"
+            className="bg-surface-variant border-white/5"
+          >
+            <SheetHeader>
+              <SheetTitle className="text-white">Minha Conta</SheetTitle>
+            </SheetHeader>
+            <div className="flex flex-col gap-4 mt-6">
+              <div className="flex items-center gap-3 p-4 bg-white/5 rounded-lg">
+                <div className="w-12 h-12 rounded-full bg-on-surface-primary/20 flex items-center justify-center">
+                  <User size={24} className="text-white" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-white font-medium">Usuário</span>
+                  <span className="text-white/60 text-sm">
+                    usuario@email.com
+                  </span>
+                </div>
+              </div>
+              <Button
+                variant="destructive"
+                className="w-full flex items-center gap-2"
+                onClick={handleLogout}
+              >
+                <LogOut size={18} />
+                Sair
+              </Button>
+            </div>
+          </SheetContent>
+        </Sheet>
       </SidebarFooter>
     </Sidebar>
   )

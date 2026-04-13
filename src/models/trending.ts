@@ -1,4 +1,5 @@
 import type { TMDBResponse } from '#/models/tmdb.ts'
+import type { Genres } from '#/models/genres.ts'
 
 export enum TrendingType {
   Movie = 'movie',
@@ -19,8 +20,8 @@ export type TrendingMedia = TrendingBase & {
   original_language: string
   overview: string
   poster_path: string
-  genres_ids: number[]
-  genres_names?: string[]
+  genre_ids: number[]
+  genres?: Genres[]
   vote_average: number
   vote_count: number
 }

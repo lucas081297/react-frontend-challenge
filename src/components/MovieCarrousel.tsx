@@ -10,6 +10,8 @@ import type { TrendingMovie, TrendingTvShow } from '#/models/trending.ts'
 import { getPosterUrl } from '#/services/tmdb/images/images.ts'
 import { formatDateFromString } from '#/utils/dateFormatter.ts'
 import { PosterSize } from '#/models/tmdb.ts'
+import { getMovieGenres } from '#/services/tmdb/genres/genres.ts'
+import { Badge } from '#/components/ui/badge.tsx'
 
 export interface MovieCarrouselProps {
   movies: (TrendingMovie | TrendingTvShow)[]
@@ -17,7 +19,14 @@ export interface MovieCarrouselProps {
   removeFromWatchList?: (movieId: number) => void
 }
 
-export function MovieCarrousel({ movies, addToWatchList, removeFromWatchList }: MovieCarrouselProps) {
+export function MovieCarrousel({
+  movies,
+  addToWatchList,
+  removeFromWatchList,
+}: MovieCarrouselProps) {
+  const { data: genresData } = getMovieGenres()
+  const genresMap = new Map(genresData?.genres.map((g) => [g.id, g.name]))
+
   if (movies.length === 0) {
     return (
       <div className="flex items-center justify-center h-48 bg-surface-variant/20 rounded-xl border border-white/5">
@@ -43,6 +52,15 @@ export function MovieCarrousel({ movies, addToWatchList, removeFromWatchList }: 
                 ? movie.release_date
                 : movie.first_air_date
 
+            const genreNames =
+              movie.genres && movie.genres.length >= 0
+                ? movie.genres.map((g) => g.name)
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+                : movie.genre_ids
+                    .slice(0, 2)
+                    .map((id: number) => genresMap.get(id))
+                    .filter((g): g is string => Boolean(g)) || []
+
             return (
               <CarouselItem
                 key={movie.id}
@@ -62,6 +80,19 @@ export function MovieCarrousel({ movies, addToWatchList, removeFromWatchList }: 
                 <div className="flex flex-col gap-1">
                   <span>{title}</span>
                   <span className="text-sm">{formatDateFromString(date)}</span>
+                  {genreNames.length > 0 && (
+                    <div className="flex flex-wrap gap-1 mt-1">
+                      {genreNames.map((genre, idx) => (
+                        <Badge
+                          key={idx}
+                          variant="secondary"
+                          className="text-xs"
+                        >
+                          {genre}
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </CarouselItem>
             )

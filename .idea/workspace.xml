@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: integrate watchlist functionality with authentication and routing&#10;&#10;- Extend `useWatchListStore` to support movies and TV shows.&#10;- Add dynamic watchlist actions to movie details and watchlist routes.&#10;- Update routing and authentication context to improve token handling.&#10;- Simplify `CardImage` and `MovieCarrousel` with watchlist integration.&#10;- Refactor `beforeLoad` logic to centralize authentication checks.">
+    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: replace `react-cookie` with `js-cookie` and improve token handling&#10;&#10;- Swap `react-cookie` with `js-cookie` for cookie management.&#10;- Add optional `genres_names` property to `TrendingMovie` model.&#10;- Enhance `addToWatchList` to include genre names in watchlist items.&#10;- Refine authentication checks in routing and login flow.&#10;- Update watchlist UI with improved handling of single and plural item labels.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MovieCarrousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MovieCarrousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/__auth/watchList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth/watchList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/__root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__root.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/cookie.store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/cookie.store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/trending.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/trending.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routeTree.gen.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routeTree.gen.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/tmdb/genres/genres.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/tmdb/genres/genres.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/settings.store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/tmdb/search/movie.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +138,7 @@
       <workItem from="1775603776450" duration="2049000" />
       <workItem from="1775606006208" duration="525000" />
       <workItem from="1775606548275" duration="1822000" />
-      <workItem from="1775609566502" duration="134264000" />
+      <workItem from="1775609566502" duration="139864000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add authentication context and update routing for login and home pages">
       <option name="closed" value="true" />
@@ -517,7 +516,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776043664958</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="feat: replace `react-cookie` with `js-cookie` and improve token handling&#10;&#10;- Swap `react-cookie` with `js-cookie` for cookie management.&#10;- Add optional `genres_names` property to `TrendingMovie` model.&#10;- Enhance `addToWatchList` to include genre names in watchlist items.&#10;- Refine authentication checks in routing and login flow.&#10;- Update watchlist UI with improved handling of single and plural item labels.">
+      <option name="closed" value="true" />
+      <created>1776046388187</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1776046388187</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,7 +542,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: add MovieCarrousel component for displaying movies in a carousel format" />
     <MESSAGE value="feat: add Carousel component with navigation and context for enhanced movie display" />
     <MESSAGE value="feat: update Home component to include trending and continue watching movie carousels" />
     <MESSAGE value="feat: add Toaster component for customizable notifications with themed icons" />
@@ -560,7 +566,8 @@
     <MESSAGE value="feat: integrate watchlist management across movie components&#10;&#10;- Add `useWatchListStore` with Zustand for managing watchlist state.&#10;- Enable add/remove watchlist actions in `UpcomingMainCard`, `TrendingCarrousel`, `MovieCarrousel`, and `PopularCarrousel`.&#10;- Update `CardImage` with dynamic watchlist buttons (add/remove). &#10;- Create `watchList` route to display saved movies using `MovieCarrousel`. &#10;- Add `zustand` dependency to project." />
     <MESSAGE value="feat: implement cookie-based token management for authentication&#10;&#10;- Add `cookie.store.ts` for handling token get, set, and remove operations.&#10;- Migrate auth context logic to use cookies for authentication state validation.&#10;- Replace hardcoded checks with cookie validation in route guards.&#10;- Install `react-cookie` dependency for cookie management in React.&#10;- Update login flow to set a token on successful authentication." />
     <MESSAGE value="feat: integrate watchlist functionality with authentication and routing&#10;&#10;- Extend `useWatchListStore` to support movies and TV shows.&#10;- Add dynamic watchlist actions to movie details and watchlist routes.&#10;- Update routing and authentication context to improve token handling.&#10;- Simplify `CardImage` and `MovieCarrousel` with watchlist integration.&#10;- Refactor `beforeLoad` logic to centralize authentication checks." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: integrate watchlist functionality with authentication and routing&#10;&#10;- Extend `useWatchListStore` to support movies and TV shows.&#10;- Add dynamic watchlist actions to movie details and watchlist routes.&#10;- Update routing and authentication context to improve token handling.&#10;- Simplify `CardImage` and `MovieCarrousel` with watchlist integration.&#10;- Refactor `beforeLoad` logic to centralize authentication checks." />
+    <MESSAGE value="feat: replace `react-cookie` with `js-cookie` and improve token handling&#10;&#10;- Swap `react-cookie` with `js-cookie` for cookie management.&#10;- Add optional `genres_names` property to `TrendingMovie` model.&#10;- Enhance `addToWatchList` to include genre names in watchlist items.&#10;- Refine authentication checks in routing and login flow.&#10;- Update watchlist UI with improved handling of single and plural item labels." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: replace `react-cookie` with `js-cookie` and improve token handling&#10;&#10;- Swap `react-cookie` with `js-cookie` for cookie management.&#10;- Add optional `genres_names` property to `TrendingMovie` model.&#10;- Enhance `addToWatchList` to include genre names in watchlist items.&#10;- Refine authentication checks in routing and login flow.&#10;- Update watchlist UI with improved handling of single and plural item labels." />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
