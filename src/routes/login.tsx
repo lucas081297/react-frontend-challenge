@@ -10,7 +10,7 @@ import {
 import { Form } from 'radix-ui'
 import { Input } from '#/components/ui/input.tsx'
 import { InputIcon } from '#/components/InputIcon.tsx'
-import { EyeOffIcon } from 'lucide-react'
+import { Eye, EyeOffIcon } from 'lucide-react'
 import { Button } from '#/components/ui/button.tsx'
 import { FcGoogle } from 'react-icons/fc'
 import { FaFacebookSquare } from 'react-icons/fa'
@@ -87,9 +87,9 @@ function RouteComponent() {
           <img
             src="/logo-nobg.png"
             alt="Rotten Potatoes"
-            className="h-[250px] w-auto object-contain"
+            className="h-62.5 w-auto object-contain"
           />
-          <span className="text-on-surface-secundary">
+          <span className="text-on-surface-secundary text-lg">
             A sua comunidade de cinema
           </span>
         </div>
@@ -131,7 +131,7 @@ function RouteComponent() {
                     label={'Senha'}
                     type={showPassword ? 'text' : 'password'}
                     placeholder={'Digite sua senha'}
-                    icon={<EyeOffIcon />}
+                    icon={!showPassword ? <Eye/> : <EyeOffIcon />}
                     description={errors.password ?? ''}
                     value={password}
                     onBtnClick={() => setShowPassword(!showPassword)}
@@ -147,6 +147,8 @@ function RouteComponent() {
                   <Button
                     className="text-on-surface-secundary hover:cursor-pointer"
                     variant="link"
+                    type={'button'}
+                    onClick={() => toast.info('Entre com email e senha')}
                   >
                     Não tenho Login
                   </Button>
@@ -163,13 +165,25 @@ function RouteComponent() {
                   Ou Conecte com
                 </span>
                 <div className="flex items-center justify-center gap-2">
-                  <Button className="hover:cursor-pointer" variant="outline">
+                  <Button
+                    className="hover:cursor-pointer"
+                    variant="outline"
+                    onClick={() => toast.info('Função ainda não implementada')}
+                  >
                     <FcGoogle />
                   </Button>
-                  <Button className="hover:cursor-pointer" variant="outline">
+                  <Button
+                    className="hover:cursor-pointer"
+                    variant="outline"
+                    onClick={() => toast.info('Função ainda não implementada')}
+                  >
                     <FaFacebookSquare />
                   </Button>
-                  <Button className="hover:cursor-pointer" variant="outline">
+                  <Button
+                    className="hover:cursor-pointer"
+                    variant="outline"
+                    onClick={() => toast.info('Função ainda não implementada')}
+                  >
                     <FaApple />
                   </Button>
                 </div>

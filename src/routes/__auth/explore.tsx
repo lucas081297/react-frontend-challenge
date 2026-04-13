@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { Input } from '#/components/ui/input.tsx'
 import { Badge } from '#/components/ui/badge.tsx'
@@ -9,9 +9,8 @@ import { getSearchMovies } from '#/services/tmdb/search/movie.ts'
 import { useWatchListStore } from '#/store/watchList.store.ts'
 import { getMovieGenres } from '#/services/tmdb/genres/genres.ts'
 import { Star, Trash2, Plus } from 'lucide-react'
-import { useWatchListStore as useWatchList } from '#/store/watchList.store.ts'
-import { Link } from '@tanstack/react-router'
 import type { TrendingMovie, TrendingTvShow } from '#/models/trending.ts'
+import { FilterPanel } from '#/components/FilterPanel.tsx'
 
 export const Route = createFileRoute('/__auth/explore')({
   component: Explore,
@@ -24,15 +23,16 @@ function Explore() {
   const [allMovies, setAllMovies] = useState<
     (TrendingMovie | TrendingTvShow)[]
   >([])
+  const [filteredMovies, setFilteredMovies] = useState<
+    (TrendingMovie | TrendingTvShow)[]
+  >([])
   const [hasMore, setHasMore] = useState(true)
   const observerRef = useRef<IntersectionObserver | null>(null)
-  const { addToWatchList, removeFromWatchList } = useWatchListStore()
+  const { addToWatchList, removeFromWatchList, watchList } = useWatchListStore()
   const { data: genresData } = getMovieGenres()
-  const { watchList } = useWatchList()
 
   const { data, isLoading, isFetching } = getSearchMovies(page, debouncedQuery)
 
-  // Atualiza a lista quando novos dados chegam
   useEffect(() => {
     if (data?.results) {
       if (page === 1) {
@@ -44,7 +44,6 @@ function Explore() {
     }
   }, [data, page])
 
-  // Debounce de 300ms para a busca
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedQuery(searchQuery)
@@ -59,7 +58,6 @@ function Explore() {
     setSearchQuery(e.target.value)
   }
 
-  // Infinite scroll com Intersection Observer
   const lastMovieRef = useCallback(
     (node: HTMLDivElement | null) => {
       if (isLoading || isFetching) return
@@ -95,19 +93,40 @@ function Explore() {
     return watchList.some((m) => m.id === movieId)
   }
 
+  const handleFilterChange = (filtered: (TrendingMovie | TrendingTvShow)[]) => {
+    setFilteredMovies(filtered)
+  }
+
+  const moviesToDisplay =
+    filteredMovies.length > 0 || allMovies.length > 0
+      ? filteredMovies.length > 0
+        ? filteredMovies
+        : allMovies
+      : []
+
   return (
     <main className="flex flex-col gap-8 p-8 bg-surface-variant/10 min-h-full">
       <div className="flex flex-col gap-6">
         <h1 className="text-4xl font-extrabold">Explorar Filmes</h1>
 
-        <div className="max-w-xl">
-          <Input
-            type="text"
-            placeholder="Buscar filmes..."
-            value={searchQuery}
-            onChange={handleInputChange}
-            className="w-full"
-          />
+        <div className="flex flex-col md:flex-row gap-4 items-start">
+          <div className="max-w-xl flex-1">
+            <Input
+              type="text"
+              placeholder="Buscar filmes..."
+              value={searchQuery}
+              onChange={handleInputChange}
+              className="w-full"
+            />
+          </div>
+          {allMovies.length > 0 && (
+            <FilterPanel
+              movies={allMovies}
+              availableGenres={genresData?.genres || []}
+              onFilterChange={handleFilterChange}
+              className="w-full md:w-auto"
+            />
+          )}
         </div>
       </div>
 
@@ -133,9 +152,9 @@ function Explore() {
         </div>
       )}
 
-      {allMovies.length > 0 && (
+      {moviesToDisplay.length > 0 && (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-          {allMovies.map((movie, index) => {
+          {moviesToDisplay.map((movie, index) => {
             const title = 'title' in movie ? movie.title : movie.name
             const date =
               'release_date' in movie
@@ -143,12 +162,12 @@ function Explore() {
                 : movie.first_air_date
 
             const genreNames =
-              movie.genres_ids
+              movie.genre_ids
                 ?.slice(0, 2)
                 .map((id: number) => genresMap.get(id))
                 .filter((g): g is string => Boolean(g)) || []
 
-            const isLast = index === allMovies.length - 1
+            const isLast = index === moviesToDisplay.length - 1
             const inWatchList = isInWatchList(movie.id)
 
             return (
