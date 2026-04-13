@@ -1,17 +1,14 @@
-# ⚛️ Desafio React Frontend
+# Sobre
 
-Bem-vindo ao repositório de avaliação técnica para a vaga de **Desenvolvedor React Pleno**.
-
-Este não é apenas um teste de codificação; é uma oportunidade para você demonstrar como estrutura aplicações escaláveis, toma decisões arquiteturais e prioriza a experiência do usuário.
-
-Estamos buscando profissionais que entendam que "fazer funcionar" é apenas o primeiro passo. O nosso foco está também em: **Manutenibilidade, Performance e Boas Práticas.**
+O Rotten Potatoes é um sistema de curadoria e descoberta de filmes, onde os usuários podem explorar uma vasta coleção de títulos, criar listas personalizadas e compartilhar suas opiniões. O objetivo é proporcionar uma experiência rica e interativa para os amantes do cinema, permitindo que eles encontrem facilmente filmes que correspondam aos seus gostos e interesses.
 
 ---
 
-## 🎯 O Objetivo
-
-O desafio consiste em desenvolver uma aplicação Front-end que consuma uma API pública, focando na criação de interfaces ricas (Dashboards, Tabelas, Filtros) e na gestão eficiente de estado e dados assíncronos.
-
+## 🎯 Telas
+- **Home:** Apresenta uma visão geral dos filmes mais populares, lançamentos recentes e recomendações personalizadas.
+- **Explorar:** Permite aos usuários buscar filmes por título, gênero, diretor ou ator.
+- **Movie Details:** Exibe informações detalhadas sobre um filme específico, incluindo sinopse, elenco, avaliações e trailers.
+- **Minha Lista:** Área onde os usuários podem criar e gerenciar sua lista de filmes favoritos, assistir mais tarde ou já assistidos.
 ### 📂 Escolha sua Missão
 
 Você tem a liberdade de escolher **um** dos dois desafios abaixo para implementar. Ambos possuem o mesmo peso e complexidade técnica. Escolha aquele com o qual você se sentir mais criativo:
