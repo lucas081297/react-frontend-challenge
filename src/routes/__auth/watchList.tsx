@@ -22,7 +22,6 @@ function WatchList() {
     setFilteredMovies(filtered)
   }
 
-  // Usar filmes filtrados se houver filtros ativos, senão usar a lista completa
   const moviesToDisplay =
     filteredMovies.length > 0 || watchList.length > 0
       ? filteredMovies.length > 0
