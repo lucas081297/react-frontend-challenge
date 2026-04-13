@@ -17,6 +17,7 @@ import {
   CarouselPrevious,
 } from '#/components/ui/carousel.tsx'
 import { useWatchListStore } from '#/store/watchList.store.ts'
+import { MovieDetailsSkeleton } from '#/components/MovieDetailsSkeleton.tsx'
 import type { TrendingMovie } from '#/models/trending.ts'
 
 export const Route = createFileRoute('/__auth/movies/$movieId')({
@@ -31,7 +32,7 @@ function MovieInfo() {
   const { data: movieResponse, isLoading, isError } = getMovieDetails(+movieId)
   const movie = movieResponse
 
-  if (isLoading) return <div>Carregando...</div>
+  if (isLoading) return <MovieDetailsSkeleton />
 
   if (isError || !movie) return <div>Erro ao carregar filme</div>
 
@@ -115,7 +116,6 @@ function MovieInfo() {
             >
               <CarouselContent className="-ml-4">
                 {movie.credits?.cast.map((c) => {
-
                   return (
                     <CarouselItem
                       key={movie.id}
@@ -126,17 +126,12 @@ function MovieInfo() {
                         name={c.name ?? ''}
                         redirectTo={'People'}
                         type="Secondary"
-                        image={getPosterUrl(
-                          c.profile_path,
-                          PosterSize.Large,
-                        )}
+                        image={getPosterUrl(c.profile_path, PosterSize.Large)}
                         description=""
                       />
                       <div className="flex flex-col gap-1">
                         <span>{c.name}</span>
-                        <span className="text-sm">
-                          {c.character}
-                        </span>
+                        <span className="text-sm">{c.character}</span>
                       </div>
                     </CarouselItem>
                   )
@@ -152,8 +147,7 @@ function MovieInfo() {
           <div className="relative pt-5">
             <div className="flex flex-col gap-2 rounded-2xl p-4 mt-4 text-sm bg-surface-variant/80">
               <h2 className="text-md font-bold mb-2">Informações</h2>
-              <div className="flex flex-row gap-2 mb-3">
-              </div>
+              <div className="flex flex-row gap-2 mb-3"></div>
 
               <div className="flex flex-row gap-2 text-xs">
                 <span className="text-nowrap text-on-surface-secundary">
