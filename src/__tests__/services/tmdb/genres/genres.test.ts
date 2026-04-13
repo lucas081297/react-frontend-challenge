@@ -1,25 +1,24 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { getMovieGenres } from '#/services/tmdb/genres/genres.ts'
 
+const mockUseQuery = vi.fn()
+
 vi.mock('@tanstack/react-query', () => ({
-  useQuery: vi.fn((config) => ({
-    data: undefined,
-    isLoading: false,
-    isError: false,
-    ...config,
-  })),
+  useQuery: (config: unknown) => mockUseQuery(config),
 }))
 
 describe('getMovieGenres', () => {
-  it('should return query configuration', () => {
-    const result = getMovieGenres()
-    expect(result).toBeDefined()
-    expect(result.queryKey).toEqual(['movie-genres'])
+  beforeEach(() => {
+    vi.clearAllMocks()
   })
 
-  it('should have query function defined', () => {
-    const result = getMovieGenres()
-    expect(result.queryFn).toBeDefined()
-    expect(typeof result.queryFn).toBe('function')
+  it('should call useQuery with correct configuration', () => {
+    getMovieGenres()
+
+    expect(mockUseQuery).toHaveBeenCalled()
+    const config = mockUseQuery.mock.calls[0][0]
+    expect(config.queryKey).toEqual(['movie-genres'])
+    expect(config.queryFn).toBeDefined()
+    expect(typeof config.queryFn).toBe('function')
   })
 })
