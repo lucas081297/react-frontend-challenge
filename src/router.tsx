@@ -11,15 +11,6 @@ export interface RouterContext {
 
 export function getRouter() {
 
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: 1000 * 60 * 5, // 5 minutos de cache padrão
-        retry: 1,
-      },
-    },
-  })
-
   return createTanStackRouter({
     routeTree,
     scrollRestoration: true,

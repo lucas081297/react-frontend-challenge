@@ -20,7 +20,7 @@ export type TrendingMedia = TrendingBase & {
   original_language: string
   overview: string
   poster_path: string
-  genre_ids: number[]
+  genre_ids?: number[]
   genres?: Genres[]
   vote_average: number
   vote_count: number

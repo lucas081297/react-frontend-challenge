@@ -17,6 +17,8 @@ import { Route as _authWatchListRouteImport } from './routes/__auth/watchList'
 import { Route as _authHomeRouteImport } from './routes/__auth/home'
 import { Route as _authExploreRouteImport } from './routes/__auth/explore'
 import { Route as _authPeoplePersonIdRouteImport } from './routes/__auth/people/$personId'
+import { Route as _authMoviesTrendingRouteImport } from './routes/__auth/movies/trending'
+import { Route as _authMoviesPopularRouteImport } from './routes/__auth/movies/popular'
 import { Route as _authMoviesMovieIdRouteImport } from './routes/__auth/movies/$movieId'
 
 const LoginRoute = LoginRouteImport.update({
@@ -58,6 +60,16 @@ const _authPeoplePersonIdRoute = _authPeoplePersonIdRouteImport.update({
   path: '/people/$personId',
   getParentRoute: () => _authRoute,
 } as any)
+const _authMoviesTrendingRoute = _authMoviesTrendingRouteImport.update({
+  id: '/movies/trending',
+  path: '/movies/trending',
+  getParentRoute: () => _authRoute,
+} as any)
+const _authMoviesPopularRoute = _authMoviesPopularRouteImport.update({
+  id: '/movies/popular',
+  path: '/movies/popular',
+  getParentRoute: () => _authRoute,
+} as any)
 const _authMoviesMovieIdRoute = _authMoviesMovieIdRouteImport.update({
   id: '/movies/$movieId',
   path: '/movies/$movieId',
@@ -72,6 +84,8 @@ export interface FileRoutesByFullPath {
   '/home': typeof _authHomeRoute
   '/watchList': typeof _authWatchListRoute
   '/movies/$movieId': typeof _authMoviesMovieIdRoute
+  '/movies/popular': typeof _authMoviesPopularRoute
+  '/movies/trending': typeof _authMoviesTrendingRoute
   '/people/$personId': typeof _authPeoplePersonIdRoute
 }
 export interface FileRoutesByTo {
@@ -82,6 +96,8 @@ export interface FileRoutesByTo {
   '/home': typeof _authHomeRoute
   '/watchList': typeof _authWatchListRoute
   '/movies/$movieId': typeof _authMoviesMovieIdRoute
+  '/movies/popular': typeof _authMoviesPopularRoute
+  '/movies/trending': typeof _authMoviesTrendingRoute
   '/people/$personId': typeof _authPeoplePersonIdRoute
 }
 export interface FileRoutesById {
@@ -94,6 +110,8 @@ export interface FileRoutesById {
   '/__auth/home': typeof _authHomeRoute
   '/__auth/watchList': typeof _authWatchListRoute
   '/__auth/movies/$movieId': typeof _authMoviesMovieIdRoute
+  '/__auth/movies/popular': typeof _authMoviesPopularRoute
+  '/__auth/movies/trending': typeof _authMoviesTrendingRoute
   '/__auth/people/$personId': typeof _authPeoplePersonIdRoute
 }
 export interface FileRouteTypes {
@@ -106,6 +124,8 @@ export interface FileRouteTypes {
     | '/home'
     | '/watchList'
     | '/movies/$movieId'
+    | '/movies/popular'
+    | '/movies/trending'
     | '/people/$personId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -116,6 +136,8 @@ export interface FileRouteTypes {
     | '/home'
     | '/watchList'
     | '/movies/$movieId'
+    | '/movies/popular'
+    | '/movies/trending'
     | '/people/$personId'
   id:
     | '__root__'
@@ -127,6 +149,8 @@ export interface FileRouteTypes {
     | '/__auth/home'
     | '/__auth/watchList'
     | '/__auth/movies/$movieId'
+    | '/__auth/movies/popular'
+    | '/__auth/movies/trending'
     | '/__auth/people/$personId'
   fileRoutesById: FileRoutesById
 }
@@ -195,6 +219,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof _authPeoplePersonIdRouteImport
       parentRoute: typeof _authRoute
     }
+    '/__auth/movies/trending': {
+      id: '/__auth/movies/trending'
+      path: '/movies/trending'
+      fullPath: '/movies/trending'
+      preLoaderRoute: typeof _authMoviesTrendingRouteImport
+      parentRoute: typeof _authRoute
+    }
+    '/__auth/movies/popular': {
+      id: '/__auth/movies/popular'
+      path: '/movies/popular'
+      fullPath: '/movies/popular'
+      preLoaderRoute: typeof _authMoviesPopularRouteImport
+      parentRoute: typeof _authRoute
+    }
     '/__auth/movies/$movieId': {
       id: '/__auth/movies/$movieId'
       path: '/movies/$movieId'
@@ -210,6 +248,8 @@ interface _authRouteChildren {
   _authHomeRoute: typeof _authHomeRoute
   _authWatchListRoute: typeof _authWatchListRoute
   _authMoviesMovieIdRoute: typeof _authMoviesMovieIdRoute
+  _authMoviesPopularRoute: typeof _authMoviesPopularRoute
+  _authMoviesTrendingRoute: typeof _authMoviesTrendingRoute
   _authPeoplePersonIdRoute: typeof _authPeoplePersonIdRoute
 }
 
@@ -218,6 +258,8 @@ const _authRouteChildren: _authRouteChildren = {
   _authHomeRoute: _authHomeRoute,
   _authWatchListRoute: _authWatchListRoute,
   _authMoviesMovieIdRoute: _authMoviesMovieIdRoute,
+  _authMoviesPopularRoute: _authMoviesPopularRoute,
+  _authMoviesTrendingRoute: _authMoviesTrendingRoute,
   _authPeoplePersonIdRoute: _authPeoplePersonIdRoute,
 }
 

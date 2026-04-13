@@ -4,6 +4,7 @@ import { TimeWindow } from '#/models/timeWindow.ts'
 import { useState } from 'react'
 import { MovieCarrouselSkeleton } from '#/components/MovieCarrouselSkeleton.tsx'
 import { useWatchListStore } from '#/store/watchList.store.ts'
+import { Link } from '@tanstack/react-router'
 
 export function TrendingCarrousel() {
   const { addToWatchList, removeFromWatchList } = useWatchListStore()
@@ -38,9 +39,12 @@ export function TrendingCarrousel() {
           <h2 className="border-l-4 border-on-surface-primary pl-4 text-2xl font-bold text-white tracking-tight">
             Tendências
           </h2>
-          <button className="text-on-surface-primary text-sm font-semibold hover:underline">
+          <Link
+            to="/movies/trending"
+            className="text-on-surface-primary text-sm font-semibold hover:underline"
+          >
             Ver tudo
-          </button>
+          </Link>
         </div>
         <MovieCarrousel
           movies={data.results}
