@@ -18,8 +18,8 @@ describe('TMDB Constants', () => {
   it('should have API headers defined', () => {
     expect(ApiHeaders).toBeDefined()
     expect(ApiHeaders).toHaveProperty('Authorization')
-    expect(ApiHeaders).toHaveProperty('accept')
-    expect(ApiHeaders.accept).toBe('application/json')
+    expect(ApiHeaders).toHaveProperty('Accept')
+    expect(ApiHeaders.Accept).toBe('application/json')
   })
 
   it('should have correct query language', () => {

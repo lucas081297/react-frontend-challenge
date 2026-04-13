@@ -1,39 +1,44 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { getPopularMovies } from '#/services/tmdb/movie-lists/popular.ts'
 
+const mockUseQuery = vi.fn()
+
 vi.mock('@tanstack/react-query', () => ({
-  useQuery: vi.fn((config) => ({
-    data: undefined,
-    isLoading: false,
-    isError: false,
-    ...config,
-  })),
+  useQuery: (config: unknown) => mockUseQuery(config),
 }))
 
 describe('getPopularMovies', () => {
-  it('should return query configuration with default page', () => {
-    const result = getPopularMovies()
-    expect(result).toBeDefined()
-    expect(result.queryKey).toEqual(['popular-movies', 1])
+  beforeEach(() => {
+    vi.clearAllMocks()
   })
 
-  it('should return query configuration with custom page', () => {
-    const result = getPopularMovies(5)
-    expect(result.queryKey).toEqual(['popular-movies', 5])
+  it('should call useQuery with default page', () => {
+    getPopularMovies()
+
+    expect(mockUseQuery).toHaveBeenCalled()
+    const config = mockUseQuery.mock.calls[0][0]
+    expect(config.queryKey).toEqual(['popular-movies', 1])
+    expect(config.queryFn).toBeDefined()
+    expect(typeof config.queryFn).toBe('function')
   })
 
-  it('should have query function defined', () => {
-    const result = getPopularMovies()
-    expect(result.queryFn).toBeDefined()
-    expect(typeof result.queryFn).toBe('function')
+  it('should call useQuery with custom page', () => {
+    getPopularMovies(5)
+    const config = mockUseQuery.mock.calls[0][0]
+    expect(config.queryKey).toEqual(['popular-movies', 5])
   })
 
   it('should accept different page numbers', () => {
-    const result1 = getPopularMovies(1)
-    const result2 = getPopularMovies(10)
-    const result3 = getPopularMovies(100)
-    expect(result1.queryKey).toEqual(['popular-movies', 1])
-    expect(result2.queryKey).toEqual(['popular-movies', 10])
-    expect(result3.queryKey).toEqual(['popular-movies', 100])
+    getPopularMovies(1)
+    getPopularMovies(10)
+    getPopularMovies(100)
+
+    const config1 = mockUseQuery.mock.calls[0][0]
+    const config2 = mockUseQuery.mock.calls[1][0]
+    const config3 = mockUseQuery.mock.calls[2][0]
+
+    expect(config1.queryKey).toEqual(['popular-movies', 1])
+    expect(config2.queryKey).toEqual(['popular-movies', 10])
+    expect(config3.queryKey).toEqual(['popular-movies', 100])
   })
 })

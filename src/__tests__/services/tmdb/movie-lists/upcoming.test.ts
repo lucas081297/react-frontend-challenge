@@ -1,37 +1,41 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { getUpcomingMovies } from '#/services/tmdb/movie-lists/upcoming.ts'
 
+const mockUseQuery = vi.fn()
+
 vi.mock('@tanstack/react-query', () => ({
-  useQuery: vi.fn((config) => ({
-    data: undefined,
-    isLoading: false,
-    isError: false,
-    ...config,
-  })),
+  useQuery: (config: unknown) => mockUseQuery(config),
 }))
 
 describe('getUpcomingMovies', () => {
-  it('should return query configuration with default page', () => {
-    const result = getUpcomingMovies()
-    expect(result).toBeDefined()
-    expect(result.queryKey).toEqual(['upcoming-movies', 1])
+  beforeEach(() => {
+    vi.clearAllMocks()
   })
 
-  it('should return query configuration with custom page', () => {
-    const result = getUpcomingMovies(3)
-    expect(result.queryKey).toEqual(['upcoming-movies', 3])
+  it('should call useQuery with default page', () => {
+    getUpcomingMovies()
+
+    expect(mockUseQuery).toHaveBeenCalled()
+    const config = mockUseQuery.mock.calls[0][0]
+    expect(config.queryKey).toEqual(['upcoming-movies', 1])
+    expect(config.queryFn).toBeDefined()
+    expect(typeof config.queryFn).toBe('function')
   })
 
-  it('should have query function defined', () => {
-    const result = getUpcomingMovies()
-    expect(result.queryFn).toBeDefined()
-    expect(typeof result.queryFn).toBe('function')
+  it('should call useQuery with custom page', () => {
+    getUpcomingMovies(3)
+    const config = mockUseQuery.mock.calls[0][0]
+    expect(config.queryKey).toEqual(['upcoming-movies', 3])
   })
 
   it('should accept different page numbers', () => {
-    const result1 = getUpcomingMovies(1)
-    const result2 = getUpcomingMovies(5)
-    expect(result1.queryKey).toEqual(['upcoming-movies', 1])
-    expect(result2.queryKey).toEqual(['upcoming-movies', 5])
+    getUpcomingMovies(1)
+    getUpcomingMovies(5)
+
+    const config1 = mockUseQuery.mock.calls[0][0]
+    const config2 = mockUseQuery.mock.calls[1][0]
+
+    expect(config1.queryKey).toEqual(['upcoming-movies', 1])
+    expect(config2.queryKey).toEqual(['upcoming-movies', 5])
   })
 })

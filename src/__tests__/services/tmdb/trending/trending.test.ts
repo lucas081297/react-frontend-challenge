@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
 import {
   getTrendingMovies,
   getTrendingTvShows,
@@ -6,70 +6,68 @@ import {
 } from '#/services/tmdb/trending/trending.ts'
 import { TimeWindow } from '#/models/timeWindow.ts'
 
+const mockUseQuery = vi.fn()
+
 vi.mock('@tanstack/react-query', () => ({
-  useQuery: vi.fn((config) => ({
-    data: undefined,
-    isLoading: false,
-    isError: false,
-    ...config,
-  })),
+  useQuery: (config: unknown) => mockUseQuery(config),
 }))
 
 describe('Trending Services', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
+
   describe('getTrendingMovies', () => {
-    it('should return query configuration', () => {
-      const result = getTrendingMovies(1, TimeWindow.Day)
-      expect(result).toBeDefined()
-      expect(result.queryKey).toEqual(['trending-movies', 1])
+    it('should call useQuery with correct configuration', () => {
+      getTrendingMovies(1, TimeWindow.Day)
+
+      expect(mockUseQuery).toHaveBeenCalled()
+      const config = mockUseQuery.mock.calls[0][0]
+      expect(config.queryKey).toEqual(['trending-movies', 1])
+      expect(config.queryFn).toBeDefined()
+      expect(typeof config.queryFn).toBe('function')
     })
 
     it('should accept different pages', () => {
-      const result = getTrendingMovies(5, TimeWindow.Week)
-      expect(result.queryKey).toEqual(['trending-movies', 5])
-    })
-
-    it('should have query function', () => {
-      const result = getTrendingMovies(1, TimeWindow.Day)
-      expect(result.queryFn).toBeDefined()
-      expect(typeof result.queryFn).toBe('function')
+      getTrendingMovies(5, TimeWindow.Week)
+      const config = mockUseQuery.mock.calls[0][0]
+      expect(config.queryKey).toEqual(['trending-movies', 5])
     })
   })
 
   describe('getTrendingTvShows', () => {
-    it('should return query configuration', () => {
-      const result = getTrendingTvShows(1, TimeWindow.Day)
-      expect(result).toBeDefined()
-      expect(result.queryKey).toEqual(['trending-tv-shows', 1])
+    it('should call useQuery with correct configuration', () => {
+      getTrendingTvShows(1, TimeWindow.Day)
+
+      expect(mockUseQuery).toHaveBeenCalled()
+      const config = mockUseQuery.mock.calls[0][0]
+      expect(config.queryKey).toEqual(['trending-tv-shows', 1])
+      expect(config.queryFn).toBeDefined()
+      expect(typeof config.queryFn).toBe('function')
     })
 
     it('should accept different pages', () => {
-      const result = getTrendingTvShows(3, TimeWindow.Week)
-      expect(result.queryKey).toEqual(['trending-tv-shows', 3])
-    })
-
-    it('should have query function', () => {
-      const result = getTrendingTvShows(1, TimeWindow.Day)
-      expect(result.queryFn).toBeDefined()
-      expect(typeof result.queryFn).toBe('function')
+      getTrendingTvShows(3, TimeWindow.Week)
+      const config = mockUseQuery.mock.calls[0][0]
+      expect(config.queryKey).toEqual(['trending-tv-shows', 3])
     })
   })
 
   describe('getTrendingPeople', () => {
-    it('should return query configuration', () => {
-      const result = getTrendingPeople(1, TimeWindow.Day)
-      expect(result).toBeDefined()
-      expect(result.queryKey).toEqual(['trending-people', 1])
+    it('should call useQuery with correct configuration', () => {
+      getTrendingPeople(1, TimeWindow.Day)
+
+      expect(mockUseQuery).toHaveBeenCalled()
+      const config = mockUseQuery.mock.calls[0][0]
+      expect(config.queryKey).toEqual(['trending-people', 1])
+      expect(config.queryFn).toBeDefined()
+      expect(typeof config.queryFn).toBe('function')
     })
 
     it('should accept different pages', () => {
-      const result = getTrendingPeople(2, TimeWindow.Week)
-      expect(result.queryKey).toEqual(['trending-people', 2])
-    })
-
-    it('should have query function', () => {
-      const result = getTrendingPeople(1, TimeWindow.Day)
-      expect(result.queryFn).toBeDefined()
-      expect(typeof result.queryFn).toBe('function')
+      getTrendingPeople(2, TimeWindow.Week)
+      const config = mockUseQuery.mock.calls[0][0]
+      expect(config.queryKey).toEqual(['trending-people', 2])
     })
   })
 })
