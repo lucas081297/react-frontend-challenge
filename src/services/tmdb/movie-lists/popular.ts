@@ -16,7 +16,7 @@ export function getPopularMovies(page = 1) {
   return useQuery<TrendingMovieResponse>({
     queryKey: ['popular-movies', page],
     queryFn: () =>
-      fetch(`${TMDBBaseUrl}/${path}/${MovieList.POPULAR}?${ApiQueryLanguage}`, { headers: ApiHeaders })
+      fetch(`${TMDBBaseUrl}/${path}/${MovieList.POPULAR}?${ApiQueryLanguage}&page=${page}`, { headers: ApiHeaders })
         .then((res) => res.json())
         .catch(() => {
           toast.error('Erro ao carregar filmes!')

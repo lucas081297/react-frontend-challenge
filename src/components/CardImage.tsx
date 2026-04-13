@@ -4,6 +4,7 @@ import { Play, Plus, Star, Trash } from 'lucide-react'
 import { PotatoStamp } from '#/components/PotatoStamp.tsx'
 import { Link } from '@tanstack/react-router'
 import { useWatchListStore } from '#/store/watchList.store.ts'
+import type { TrendingMovie, TrendingTvShow } from '#/models/trending.ts'
 
 interface CardImageProps {
   id: number
@@ -15,7 +16,11 @@ interface CardImageProps {
   redirectTo?: 'People' | 'Movies'
   video?: string
   soon?: boolean
-  addToWatchList?: (movieId: number) => void
+  movie?: TrendingMovie | TrendingTvShow
+  addToWatchList?: (
+    movie: TrendingMovie | TrendingTvShow,
+    genres?: { id: number; name: string }[],
+  ) => void
   removeFromWatchList?: (movieId: number) => void
 }
 
@@ -72,7 +77,10 @@ export function CardImage(props: CardImageProps) {
         <span className="font-headline font-extrabold tracking-tighter text-on-surface-primary leading-tight text-5xl md:text-7xl drop-shadow-lg">
           {props.name}
         </span>
-        <span style={redirect != 'People' ? {lineClamp: 3} : {}} className="text-white/90 text-lg md:text-xl mt-4 leading-relaxed drop-shadow-md">
+        <span
+          style={redirect != 'People' ? { lineClamp: 3 } : {}}
+          className="text-white/90 text-lg md:text-xl mt-4 leading-relaxed drop-shadow-md"
+        >
           {props.description}
         </span>
         {redirect != 'People' && (
@@ -88,22 +96,25 @@ export function CardImage(props: CardImageProps) {
             />
             {watchList.some((movie) => movie.id === props.id) ? (
               <ButtonIcon
-              className="bg-surface-variant/50 backdrop-blur-md text-white border-white/20 hover:bg-surface-variant/70"
-              icon={<Trash />}
-              label="Minha Lista"
-              onClick={() => {
-              props.removeFromWatchList?.(props.id)
-            }}
+                className="bg-surface-variant/50 backdrop-blur-md text-white border-white/20 hover:bg-surface-variant/70"
+                icon={<Trash />}
+                label="Minha Lista"
+                onClick={() => {
+                  props.removeFromWatchList?.(props.id)
+                }}
               />
-            )
-            :(<ButtonIcon
-              className="bg-surface-variant/50 backdrop-blur-md text-white border-white/20 hover:bg-surface-variant/70"
-              icon={<Plus />}
-              label="Minha Lista"
-              onClick={() => {
-                props.addToWatchList?.(props.id)
-              }}
-            />)}
+            ) : (
+              <ButtonIcon
+                className="bg-surface-variant/50 backdrop-blur-md text-white border-white/20 hover:bg-surface-variant/70"
+                icon={<Plus />}
+                label="Minha Lista"
+                onClick={() => {
+                  if (props.movie) {
+                    props.addToWatchList?.(props.movie)
+                  }
+                }}
+              />
+            )}
           </div>
         )}
       </div>

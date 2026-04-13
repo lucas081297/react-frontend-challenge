@@ -43,8 +43,7 @@ function MovieInfo() {
 
   const validUrl = getYouTubeUrl(validVideo?.key)
 
-  const handleAddToWatchList = (id: number) => {
-    if (movie.id !== id) return
+  const handleAddToWatchList = () => {
     addToWatchList(movie as TrendingMovie)
   }
 
@@ -62,6 +61,7 @@ function MovieInfo() {
         description=""
         video={validUrl}
         soon={false}
+        movie={movie as TrendingMovie}
         addToWatchList={handleAddToWatchList}
         removeFromWatchList={handleRemoveFromWatchList}
       ></CardImage>

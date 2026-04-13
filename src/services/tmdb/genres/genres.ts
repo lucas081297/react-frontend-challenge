@@ -16,15 +16,3 @@ export function getMovieGenres() {
         }),
   })
 }
-
-export function getTvShowGenres() {
-  return useQuery<MovieGenresResponse>({
-    queryKey: ['tv-shows-genres'],
-    queryFn: () =>
-      fetch(`${TMDBBaseUrl}/${path}/tv/list`, { headers: ApiHeaders })
-        .then((res) => res.json())
-        .catch(() => {
-          toast.error('Erro ao carregar series!')
-        }),
-  })
-}

@@ -15,13 +15,3 @@ export enum PosterSize {
   ExtraLarge = 'w500',
   Original = 'original',
 }
-
-/** Tamanhos de imagem disponíveis para backdrops na API do TMDB */
-export enum BackDropSize {
-  ExtraSmall = 'w300',
-  Small = 'w780',
-  Medium = 'w1280',
-  Large = 'w1920',
-  ExtraLarge = 'w2560',
-  Original = 'original',
-}

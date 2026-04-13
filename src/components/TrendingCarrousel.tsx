@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { MovieCarrouselSkeleton } from '#/components/MovieCarrouselSkeleton.tsx'
 import { useWatchListStore } from '#/store/watchList.store.ts'
 import { Link } from '@tanstack/react-router'
+import type { TrendingMovie, TrendingTvShow } from '#/models/trending.ts'
 
 export function TrendingCarrousel() {
   const { addToWatchList, removeFromWatchList } = useWatchListStore()
@@ -12,12 +13,8 @@ export function TrendingCarrousel() {
 
   const { data, isLoading, isError } = getTrendingMovies(page, TimeWindow.Day)
 
-  const handleAddToWatchList = (movieId: number) => {
-    if (!data) return
-    const finded = data.results.find((movie) => movie.id === movieId)
-    if (finded) {
-      addToWatchList(finded)
-    }
+  const handleAddToWatchList = (movie: TrendingMovie | TrendingTvShow) => {
+    addToWatchList(movie)
   }
 
   const handleRemoveFromWatchList = (movieId: number) => {

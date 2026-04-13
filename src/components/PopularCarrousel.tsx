@@ -5,17 +5,14 @@ import { getMovieGenres } from '#/services/tmdb/genres/genres.ts'
 import { MovieCarrouselSkeleton } from '#/components/MovieCarrouselSkeleton.tsx'
 import { useWatchListStore } from '#/store/watchList.store.ts'
 import { Link } from '@tanstack/react-router'
+import type { TrendingMovie, TrendingTvShow } from '#/models/trending.ts'
 
 export function PopularCarrousel() {
   const { addToWatchList, removeFromWatchList } = useWatchListStore()
   const { data: genresData } = getMovieGenres()
 
-  const handleAddToWatchList = (movieId: number) => {
-    if (!data) return
-    const finded = data.results.find((movie) => movie.id === movieId)
-    if (finded) {
-      addToWatchList(finded, genresData?.genres)
-    }
+  const handleAddToWatchList = (movie: TrendingMovie | TrendingTvShow) => {
+    addToWatchList(movie, genresData?.genres)
   }
 
   const handleRemoveFromWatchList = (movieId: number) => {

@@ -15,8 +15,12 @@ import { Badge } from '#/components/ui/badge.tsx'
 
 export interface MovieCarrouselProps {
   movies: (TrendingMovie | TrendingTvShow)[]
-  addToWatchList?: (movieId: number) => void
+  addToWatchList?: (
+    movie: TrendingMovie | TrendingTvShow,
+    genres?: { id: number; name: string }[],
+  ) => void
   removeFromWatchList?: (movieId: number) => void
+  showDeleteButton?: boolean
 }
 
 export function MovieCarrousel({
@@ -55,9 +59,8 @@ export function MovieCarrousel({
             const genreNames =
               movie.genres && movie.genres.length >= 0
                 ? movie.genres.map((g) => g.name)
-                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 : movie.genre_ids
-                    .slice(0, 2)
+                    ?.slice(0, 2)
                     .map((id: number) => genresMap.get(id))
                     .filter((g): g is string => Boolean(g)) || []
 
@@ -74,6 +77,7 @@ export function MovieCarrousel({
                   average={movie.vote_average}
                   image={getPosterUrl(movie.poster_path, PosterSize.Large)}
                   description=""
+                  movie={movie}
                   addToWatchList={addToWatchList}
                   removeFromWatchList={removeFromWatchList}
                 />

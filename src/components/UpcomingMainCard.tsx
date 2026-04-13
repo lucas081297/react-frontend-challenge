@@ -3,7 +3,7 @@ import { CardImage } from '#/components/CardImage.tsx'
 import { getUpcomingMovies } from '#/services/tmdb/movie-lists/upcoming.ts'
 import { useEffect, useState } from 'react'
 import { getVideos } from '#/services/tmdb/movies/videos.ts'
-import type { TrendingMovie } from '#/models/trending.ts'
+import type { TrendingMovie, TrendingTvShow } from '#/models/trending.ts'
 import { Skeleton } from '#/components/ui/skeleton.tsx'
 import { PosterSize } from '#/models/tmdb.ts'
 import { useWatchListStore } from '#/store/watchList.store.ts'
@@ -18,9 +18,8 @@ export function UpcomingMainCard() {
 
   const { addToWatchList, removeFromWatchList } = useWatchListStore()
 
-  const handleAddToWatchList = (movieId: number) => {
-    if (!upcomingMovie || upcomingMovie.id !== movieId) return
-    addToWatchList(upcomingMovie)
+  const handleAddToWatchList = (movie: TrendingMovie | TrendingTvShow) => {
+    addToWatchList(movie)
   }
 
   const handleRemoveFromWatchList = (movieId: number) => {
@@ -55,6 +54,7 @@ export function UpcomingMainCard() {
         average={upcomingMovie.vote_average}
         name={upcomingMovie.title}
         image={getPosterUrl(upcomingMovie.poster_path, PosterSize.Original)}
+        movie={upcomingMovie}
         addToWatchList={handleAddToWatchList}
         removeFromWatchList={handleRemoveFromWatchList}
         description={upcomingMovie.overview}

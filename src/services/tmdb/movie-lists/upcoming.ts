@@ -16,7 +16,7 @@ export function getUpcomingMovies(page = 1) {
   return useQuery<TrendingMovieResponse>({
     queryKey: ['upcoming-movies', page],
     queryFn: () =>
-      fetch(`${TMDBBaseUrl}/${path}/${MovieList.UPCOMING}?${ApiQueryLanguage}`, { headers: ApiHeaders })
+      fetch(`${TMDBBaseUrl}/${path}/${MovieList.UPCOMING}?${ApiQueryLanguage}&page=${page}`, { headers: ApiHeaders })
         .then((res) => res.json())
         .catch(() => {
           toast.error('Erro ao carregar filmes!')
