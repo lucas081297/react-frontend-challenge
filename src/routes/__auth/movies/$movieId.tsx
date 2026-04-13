@@ -16,6 +16,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '#/components/ui/carousel.tsx'
+import { useWatchListStore } from '#/store/watchList.store.ts'
+import type { TrendingMovie } from '#/models/trending.ts'
 
 export const Route = createFileRoute('/__auth/movies/$movieId')({
   component: MovieInfo,
@@ -23,6 +25,8 @@ export const Route = createFileRoute('/__auth/movies/$movieId')({
 
 function MovieInfo() {
   const { movieId } = Route.useParams()
+
+  const { addToWatchList, removeFromWatchList } = useWatchListStore()
 
   const { data: movieResponse, isLoading, isError } = getMovieDetails(+movieId)
   const movie = movieResponse
@@ -38,6 +42,15 @@ function MovieInfo() {
 
   const validUrl = getYouTubeUrl(validVideo?.key)
 
+  const handleAddToWatchList = (id: number) => {
+    if (movie.id !== id) return
+    addToWatchList(movie as TrendingMovie)
+  }
+
+  const handleRemoveFromWatchList = (id: number) => {
+    removeFromWatchList(id)
+  }
+
   return (
     <>
       <CardImage
@@ -48,6 +61,8 @@ function MovieInfo() {
         description=""
         video={validUrl}
         soon={false}
+        addToWatchList={handleAddToWatchList}
+        removeFromWatchList={handleRemoveFromWatchList}
       ></CardImage>
       <main className="my-8 px-10 flex flex-row gap-8 justify-between">
         <section className="flex flex-col w-[65%] gap-10">
@@ -137,9 +152,7 @@ function MovieInfo() {
           <div className="relative pt-5">
             <div className="flex flex-col gap-2 rounded-2xl p-4 mt-4 text-sm bg-surface-variant/80">
               <h2 className="text-md font-bold mb-2">Informações</h2>
-              <div className="flex flex-row gap-2 text-xs">
-                <span className="text-on-surface-secundary">Diretor</span>
-                <span>Diretor</span>
+              <div className="flex flex-row gap-2 mb-3">
               </div>
 
               <div className="flex flex-row gap-2 text-xs">

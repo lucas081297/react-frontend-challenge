@@ -1,7 +1,7 @@
 import {
   HeadContent,
   Scripts,
-  createRootRoute,
+  createRootRouteWithContext,
   redirect,
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
@@ -12,6 +12,7 @@ import * as React from 'react'
 import { QueryClient } from '@tanstack/query-core'
 import { CookiesProvider } from 'react-cookie'
 import { getToken } from '#/store/cookie.store.ts'
+import type { RouterContext } from '#/router.tsx'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,19 +23,21 @@ const queryClient = new QueryClient({
   },
 })
 
-export const Route = createRootRoute({
+export const Route = createRootRouteWithContext<RouterContext>()({
   beforeLoad: ({ location }) => {
     const isAuthenticated = getToken()
+    console.log('Root beforeLoad - isAuthenticated:', isAuthenticated, 'location:', location.pathname)
     // Redireciona para login se não autenticado e não está já na página de login
     if (!isAuthenticated && location.pathname !== '/login') {
+      console.log('Redirecting unauthenticated user to /login')
       throw redirect({ to: '/login' })
     }
     return {
-      isAuthenticated,
+      auth: { isAuthenticated }
     }
   },
-  context: () => ({
-    isAuthenticated: getToken(),
+  context: ({ auth }) => ({
+    auth,
     queryClient,
   }),
   head: () => ({

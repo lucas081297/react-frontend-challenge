@@ -5,8 +5,10 @@ import { QueryClientProvider } from '@tanstack/react-query'
 
 export const Route = createFileRoute('/__auth')({
   beforeLoad: ({ context }) => {
+    console.log('Auth beforeLoad - isAuthenticated:', context.auth.isAuthenticated)
     // Verifica no context se está autenticado (vem do __root.tsx)
-    if (!(context as any).isAuthenticated) {
+    if (!context.auth.isAuthenticated) {
+      console.log('Redirecting unauthenticated user to /login from auth')
       throw redirect({ to: '/login' })
     }
   },

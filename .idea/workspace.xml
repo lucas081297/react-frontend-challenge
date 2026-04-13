@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: implement cookie-based token management for authentication&#10;&#10;- Add `cookie.store.ts` for handling token get, set, and remove operations.&#10;- Migrate auth context logic to use cookies for authentication state validation.&#10;- Replace hardcoded checks with cookie validation in route guards.&#10;- Install `react-cookie` dependency for cookie management in React.&#10;- Update login flow to set a token on successful authentication.">
-      <change beforePath="$PROJECT_DIR$/src/types/router.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/__auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/__auth/movies/$movieId.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth/movies/$movieId.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/__auth/watchList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth/watchList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/__root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__root.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/watchList.store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/watchList.store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +140,7 @@
       <workItem from="1775603776450" duration="2049000" />
       <workItem from="1775606006208" duration="525000" />
       <workItem from="1775606548275" duration="1822000" />
-      <workItem from="1775609566502" duration="128899000" />
+      <workItem from="1775609566502" duration="131811000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add authentication context and update routing for login and home pages">
       <option name="closed" value="true" />
@@ -494,7 +502,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776039987219</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="feat: implement cookie-based token management for authentication&#10;&#10;- Add `cookie.store.ts` for handling token get, set, and remove operations.&#10;- Migrate auth context logic to use cookies for authentication state validation.&#10;- Replace hardcoded checks with cookie validation in route guards.&#10;- Install `react-cookie` dependency for cookie management in React.&#10;- Update login flow to set a token on successful authentication.">
+      <option name="closed" value="true" />
+      <created>1776040684947</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1776040684947</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

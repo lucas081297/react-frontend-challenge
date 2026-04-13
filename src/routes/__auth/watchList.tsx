@@ -9,17 +9,21 @@ export const Route = createFileRoute('/__auth/watchList')({
 
 function WatchList() {
 
-  const {watchList} = useWatchListStore()
+  const { watchList, addToWatchList, removeFromWatchList } = useWatchListStore()
 
   return (
     <section className="p-6">
       <div className="flex flex-col justify-between gap-6">
         <div className="flex flex-col gap-2">
           <h1 className="text-4xl font-extrabold">Minha Lista</h1>
-          <Badge>12 Filmes Salvos</Badge>
+          <Badge>{watchList.length} Itens Salvos</Badge>
         </div>
         <div>
-          <MovieCarrousel movies={watchList} />
+          <MovieCarrousel
+            movies={watchList}
+            addToWatchList={addToWatchList}
+            removeFromWatchList={removeFromWatchList}
+          />
         </div>
       </div>
     </section>

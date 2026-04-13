@@ -3,7 +3,9 @@ import { routeTree } from './routeTree.gen'
 import { QueryClient } from '@tanstack/query-core'
 
 export interface RouterContext {
-  isAuthenticated: boolean
+  auth: {
+    isAuthenticated: boolean
+  }
   queryClient: QueryClient
 }
 

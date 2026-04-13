@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router'
 import {
   Card,
   CardContent,
@@ -20,7 +20,7 @@ import { useState } from 'react'
 import { z } from 'zod'
 import { Field } from '@radix-ui/react-form'
 import { FieldError, FieldLabel } from '#/components/ui/field.tsx'
-import { useCookies } from 'react-cookie'
+import { setToken } from '#/store/cookie.store.ts'
 
 const loginSchema = z.object({
   email: z.string().email('E-mail inválido'),
@@ -28,16 +28,18 @@ const loginSchema = z.object({
 })
 
 export const Route = createFileRoute('/login')({
+  beforeLoad: ({ context }) => {
+    console.log('Login beforeLoad - isAuthenticated:', context.auth.isAuthenticated)
+    if (context.auth.isAuthenticated) {
+      console.log('Redirecting authenticated user to /home')
+      throw redirect({ to: '/home' })
+    }
+  },
   component: RouteComponent,
 })
 
 function RouteComponent() {
   const navigate = useNavigate()
-  const [cookie, setCookie] = useCookies(['token'])
-
-  if (cookie.token) {
-    navigate({ to: '/home' })
-  }
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -60,7 +62,7 @@ function RouteComponent() {
     }
 
     setErrors({})
-    setCookie('token', 'fake-token')
+    setToken('fake-token')
     toast.success('Login realizado com sucesso!')
     navigate({ to: '/home' })
   }

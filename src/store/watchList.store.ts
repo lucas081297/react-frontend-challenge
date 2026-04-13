@@ -1,10 +1,10 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
-import type { TrendingMovie } from '#/models/trending.ts'
+import type { TrendingMovie, TrendingTvShow } from '#/models/trending.ts'
 
 export interface WatchListState {
-  watchList: TrendingMovie[]
-  addToWatchList: (movie: TrendingMovie) => void
+  watchList: (TrendingMovie | TrendingTvShow)[]
+  addToWatchList: (movie: TrendingMovie | TrendingTvShow) => void
   removeFromWatchList: (movieId: number) => void
   clearWatchList: () => void
 }
