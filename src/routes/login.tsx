@@ -84,9 +84,11 @@ function RouteComponent() {
       </div>
       <section className="w-full h-full relative z-1 flex flex-col justify-center items-center animate-fade-in-up">
         <div className="flex flex-col items-center mb-10 gap-2">
-          <h1 className="uppercase text-on-surface-primary text-4xl font-bold font-headline">
-            Rotten Potatoes
-          </h1>
+          <img
+            src="/logo-nobg.png"
+            alt="Rotten Potatoes"
+            className="h-[250px] w-auto object-contain"
+          />
           <span className="text-on-surface-secundary">
             A sua comunidade de cinema
           </span>
