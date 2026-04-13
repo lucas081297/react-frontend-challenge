@@ -26,14 +26,21 @@ const queryClient = new QueryClient({
 export const Route = createRootRouteWithContext<RouterContext>()({
   beforeLoad: ({ location }) => {
     const isAuthenticated = getToken()
-    console.log('Root beforeLoad - isAuthenticated:', isAuthenticated, 'location:', location.pathname)
-    // Redireciona para login se não autenticado e não está já na página de login
+    console.log(
+      'Root beforeLoad - isAuthenticated:',
+      isAuthenticated,
+      'location:',
+      location.pathname,
+    )
+
+    // Redireciona para login se não autenticado e não está na página de login
     if (!isAuthenticated && location.pathname !== '/login') {
       console.log('Redirecting unauthenticated user to /login')
       throw redirect({ to: '/login' })
     }
+
     return {
-      auth: { isAuthenticated }
+      auth: { isAuthenticated },
     }
   },
   context: ({ auth }) => ({

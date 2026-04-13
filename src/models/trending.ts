@@ -3,7 +3,7 @@ import type { TMDBResponse } from '#/models/tmdb.ts'
 export enum TrendingType {
   Movie = 'movie',
   TvShow = 'tv',
-  People = 'person'
+  People = 'person',
 }
 
 /** Tipo comum para todos os tipos de tendencias*/
@@ -20,6 +20,7 @@ export type TrendingMedia = TrendingBase & {
   overview: string
   poster_path: string
   genres_ids: number[]
+  genres_names?: string[]
   vote_average: number
   vote_count: number
 }
@@ -59,5 +60,3 @@ export type TrendingPeopleResponse = TMDBResponse<TrendingPeople[]>
 export type TrendingAllResponse = TMDBResponse<
   (TrendingMovie | TrendingTvShow | TrendingPeople)[]
 >
-
-

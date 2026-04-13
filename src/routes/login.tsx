@@ -1,4 +1,4 @@
-import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router'
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import {
   Card,
   CardContent,
@@ -16,11 +16,11 @@ import { FcGoogle } from 'react-icons/fc'
 import { FaFacebookSquare } from 'react-icons/fa'
 import { FaApple } from 'react-icons/fa6'
 import { toast } from 'sonner'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { z } from 'zod'
 import { Field } from '@radix-ui/react-form'
 import { FieldError, FieldLabel } from '#/components/ui/field.tsx'
-import { setToken } from '#/store/cookie.store.ts'
+import { setToken, getToken } from '#/store/cookie.store.ts'
 
 const loginSchema = z.object({
   email: z.string().email('E-mail inválido'),
@@ -28,23 +28,26 @@ const loginSchema = z.object({
 })
 
 export const Route = createFileRoute('/login')({
-  beforeLoad: ({ context }) => {
-    console.log('Login beforeLoad - isAuthenticated:', context.auth.isAuthenticated)
-    if (context.auth.isAuthenticated) {
-      console.log('Redirecting authenticated user to /home')
-      throw redirect({ to: '/home' })
-    }
-  },
   component: RouteComponent,
 })
 
 function RouteComponent() {
   const navigate = useNavigate()
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [errors, setErrors] = useState<{ email?: string; password?: string }>({})
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>(
+    {},
+  )
   const [showPassword, setShowPassword] = useState(false)
+
+  // Verifica autenticação no mount e redireciona se já estiver logado
+  useEffect(() => {
+    console.log('Login component mounted, checking auth...')
+    if (getToken()) {
+      console.log('User is authenticated, redirecting to /home')
+      navigate({ to: '/home', replace: true })
+    }
+  }, [navigate])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -84,7 +87,9 @@ function RouteComponent() {
           <h1 className="uppercase text-on-surface-primary text-4xl font-bold font-headline">
             Rotten Potatoes
           </h1>
-          <span className="text-on-surface-secundary">A sua comunidade de cinema</span>
+          <span className="text-on-surface-secundary">
+            A sua comunidade de cinema
+          </span>
         </div>
         <div className="relative z-10 w-full max-w-md flex justify-center">
           <Card className="w-full max-w-sm bg-surface-variant backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] ring-1 ring-gray-50">

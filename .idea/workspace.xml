@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: implement cookie-based token management for authentication&#10;&#10;- Add `cookie.store.ts` for handling token get, set, and remove operations.&#10;- Migrate auth context logic to use cookies for authentication state validation.&#10;- Replace hardcoded checks with cookie validation in route guards.&#10;- Install `react-cookie` dependency for cookie management in React.&#10;- Update login flow to set a token on successful authentication.">
+    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: integrate watchlist functionality with authentication and routing&#10;&#10;- Extend `useWatchListStore` to support movies and TV shows.&#10;- Add dynamic watchlist actions to movie details and watchlist routes.&#10;- Update routing and authentication context to improve token handling.&#10;- Simplify `CardImage` and `MovieCarrousel` with watchlist integration.&#10;- Refactor `beforeLoad` logic to centralize authentication checks.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/__auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/__auth/movies/$movieId.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth/movies/$movieId.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MovieCarrousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MovieCarrousel.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/__auth/watchList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth/watchList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/__root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__root.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/watchList.store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/watchList.store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/cookie.store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/cookie.store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +139,7 @@
       <workItem from="1775603776450" duration="2049000" />
       <workItem from="1775606006208" duration="525000" />
       <workItem from="1775606548275" duration="1822000" />
-      <workItem from="1775609566502" duration="131811000" />
+      <workItem from="1775609566502" duration="134264000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add authentication context and update routing for login and home pages">
       <option name="closed" value="true" />
@@ -510,7 +509,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776040684947</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="feat: integrate watchlist functionality with authentication and routing&#10;&#10;- Extend `useWatchListStore` to support movies and TV shows.&#10;- Add dynamic watchlist actions to movie details and watchlist routes.&#10;- Update routing and authentication context to improve token handling.&#10;- Simplify `CardImage` and `MovieCarrousel` with watchlist integration.&#10;- Refactor `beforeLoad` logic to centralize authentication checks.">
+      <option name="closed" value="true" />
+      <created>1776043664958</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1776043664958</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -528,7 +535,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: enhance CardImage component with improved styling and optional image prop" />
     <MESSAGE value="feat: add MovieCarrousel component for displaying movies in a carousel format" />
     <MESSAGE value="feat: add Carousel component with navigation and context for enhanced movie display" />
     <MESSAGE value="feat: update Home component to include trending and continue watching movie carousels" />
@@ -553,7 +559,8 @@
     <MESSAGE value="feat: update poster sizes for better image quality in movie components&#10;&#10;- Change `PosterSize` in `UpcomingMainCard` to `Original` for higher resolution images.&#10;- Update `PosterSize` in `MovieCarrousel` to `Large` and add redirection to the movies section." />
     <MESSAGE value="feat: integrate watchlist management across movie components&#10;&#10;- Add `useWatchListStore` with Zustand for managing watchlist state.&#10;- Enable add/remove watchlist actions in `UpcomingMainCard`, `TrendingCarrousel`, `MovieCarrousel`, and `PopularCarrousel`.&#10;- Update `CardImage` with dynamic watchlist buttons (add/remove). &#10;- Create `watchList` route to display saved movies using `MovieCarrousel`. &#10;- Add `zustand` dependency to project." />
     <MESSAGE value="feat: implement cookie-based token management for authentication&#10;&#10;- Add `cookie.store.ts` for handling token get, set, and remove operations.&#10;- Migrate auth context logic to use cookies for authentication state validation.&#10;- Replace hardcoded checks with cookie validation in route guards.&#10;- Install `react-cookie` dependency for cookie management in React.&#10;- Update login flow to set a token on successful authentication." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: implement cookie-based token management for authentication&#10;&#10;- Add `cookie.store.ts` for handling token get, set, and remove operations.&#10;- Migrate auth context logic to use cookies for authentication state validation.&#10;- Replace hardcoded checks with cookie validation in route guards.&#10;- Install `react-cookie` dependency for cookie management in React.&#10;- Update login flow to set a token on successful authentication." />
+    <MESSAGE value="feat: integrate watchlist functionality with authentication and routing&#10;&#10;- Extend `useWatchListStore` to support movies and TV shows.&#10;- Add dynamic watchlist actions to movie details and watchlist routes.&#10;- Update routing and authentication context to improve token handling.&#10;- Simplify `CardImage` and `MovieCarrousel` with watchlist integration.&#10;- Refactor `beforeLoad` logic to centralize authentication checks." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: integrate watchlist functionality with authentication and routing&#10;&#10;- Extend `useWatchListStore` to support movies and TV shows.&#10;- Add dynamic watchlist actions to movie details and watchlist routes.&#10;- Update routing and authentication context to improve token handling.&#10;- Simplify `CardImage` and `MovieCarrousel` with watchlist integration.&#10;- Refactor `beforeLoad` logic to centralize authentication checks." />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

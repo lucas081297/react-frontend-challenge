@@ -1,20 +1,23 @@
-import { Cookies } from 'react-cookie'
+import Cookies from 'js-cookie'
 
-const cookies = new Cookies()
+const TOKEN_KEY = 'token'
 
-export function getToken() {
-  return !!cookies.get('token')
+export function getToken(): boolean {
+  const token = Cookies.get(TOKEN_KEY)
+  console.log('getToken called, token found:', !!token)
+  return !!token
 }
 
 export function setToken(token: string) {
-  cookies.set('token', token, {
+  console.log('setToken called')
+  Cookies.set(TOKEN_KEY, token, {
     path: '/',
-    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+    expires: 7, // 7 days
     sameSite: 'lax',
   })
 }
 
 export function removeToken() {
-  cookies.remove('token', { path: '/' })
+  console.log('removeToken called')
+  Cookies.remove(TOKEN_KEY, { path: '/' })
 }
-
