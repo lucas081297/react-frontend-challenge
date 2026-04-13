@@ -1,4 +1,4 @@
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import {
   Card,
   CardContent,
@@ -8,8 +8,6 @@ import {
   CardTitle,
 } from '#/components/ui/card.tsx'
 import { Form } from 'radix-ui'
-import { Field } from '@radix-ui/react-form'
-import { FieldLabel } from '#/components/ui/field.tsx'
 import { Input } from '#/components/ui/input.tsx'
 import { InputIcon } from '#/components/InputIcon.tsx'
 import { EyeOffIcon } from 'lucide-react'
@@ -17,17 +15,56 @@ import { Button } from '#/components/ui/button.tsx'
 import { FcGoogle } from 'react-icons/fc'
 import { FaFacebookSquare } from 'react-icons/fa'
 import { FaApple } from 'react-icons/fa6'
+import { toast } from 'sonner'
+import { useState } from 'react'
+import { z } from 'zod'
+import { Field } from '@radix-ui/react-form'
+import { FieldError, FieldLabel } from '#/components/ui/field.tsx'
+import { useCookies } from 'react-cookie'
+
+const loginSchema = z.object({
+  email: z.string().email('E-mail inválido'),
+  password: z.string().min(6, 'A senha deve ter no mínimo 6 caracteres'),
+})
 
 export const Route = createFileRoute('/login')({
-  beforeLoad: ({ context }) => {
-    if (context.isAuthenticated) {
-      throw redirect({ to: '/home' })
-    }
-  },
   component: RouteComponent,
 })
 
 function RouteComponent() {
+  const navigate = useNavigate()
+  const [cookie, setCookie] = useCookies(['token'])
+
+  if (cookie.token) {
+    navigate({ to: '/home' })
+  }
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>({})
+  const [showPassword, setShowPassword] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+
+    const result = loginSchema.safeParse({ email, password })
+
+    if (!result.success) {
+      const fieldErrors: { email?: string; password?: string } = {}
+      result.error.issues.forEach((issue) => {
+        if (issue.path[0] === 'email') fieldErrors.email = issue.message
+        if (issue.path[0] === 'password') fieldErrors.password = issue.message
+      })
+      setErrors(fieldErrors)
+      return
+    }
+
+    setErrors({})
+    setCookie('token', 'fake-token')
+    toast.success('Login realizado com sucesso!')
+    navigate({ to: '/home' })
+  }
+
   return (
     <main className="w-screen h-screen relative">
       <div className="absolute inset-0 z-0">
@@ -35,7 +72,7 @@ function RouteComponent() {
           alt="Cinematic Backdrop"
           className="w-full h-full object-cover opacity-40 grayscale-[0.5]"
           data-alt="Bg"
-          src="/public/bg.png"
+          src="/bg.png"
         />
         <div className="absolute inset-0 bg-linear-to-t from-surface via-surface/60 to-surface/20"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#131313_100%)] opacity-80"></div>
@@ -45,7 +82,7 @@ function RouteComponent() {
           <h1 className="uppercase text-on-surface-primary text-4xl font-bold font-headline">
             Rotten Potatoes
           </h1>
-          <span className="text-on-surface-secundary">Nao sei ainda</span>
+          <span className="text-on-surface-secundary">A sua comunidade de cinema</span>
         </div>
         <div className="relative z-10 w-full max-w-md flex justify-center">
           <Card className="w-full max-w-sm bg-surface-variant backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] ring-1 ring-gray-50">
@@ -58,9 +95,9 @@ function RouteComponent() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Form.Root>
+              <Form.Root onSubmit={handleSubmit}>
                 <div className="flex flex-col items-left gap-4">
-                  <Field name="email">
+                  <Field name="email" data-invalid={!!errors.email}>
                     <FieldLabel
                       className="uppercase text-on-surface-secundary mb-2"
                       htmlFor="input-email"
@@ -71,14 +108,30 @@ function RouteComponent() {
                       id="input-email"
                       type="text"
                       placeholder="email@exemplo.com"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value)
+                        if (errors.email)
+                          setErrors((prev) => ({ ...prev, email: undefined }))
+                      }}
+                      aria-invalid={!!errors.email}
                     />
+                    <FieldError>{errors.email}</FieldError>
                   </Field>
                   <InputIcon
                     label={'Senha'}
-                    type={'password'}
+                    type={showPassword ? 'text' : 'password'}
                     placeholder={'Digite sua senha'}
                     icon={<EyeOffIcon />}
-                    description={''}
+                    description={errors.password ?? ''}
+                    value={password}
+                    onBtnClick={() => setShowPassword(!showPassword)}
+                    onChange={(e) => {
+                      setPassword(e.target.value)
+                      if (errors.password)
+                        setErrors((prev) => ({ ...prev, password: undefined }))
+                    }}
+                    data-invalid={!!errors.password}
                   />
                 </div>
                 <div className="mt-2 w-full text-center">

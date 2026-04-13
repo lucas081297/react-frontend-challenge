@@ -2,7 +2,10 @@ import { createRouter as createTanStackRouter } from '@tanstack/react-router'
 import { routeTree } from './routeTree.gen'
 import { QueryClient } from '@tanstack/query-core'
 
-type Context = { isAuthenticated: boolean, queryClient: QueryClient }
+export interface RouterContext {
+  isAuthenticated: boolean
+  queryClient: QueryClient
+}
 
 export function getRouter() {
 
@@ -15,19 +18,15 @@ export function getRouter() {
     },
   })
 
-
   return createTanStackRouter({
     routeTree,
-    context: {
-      isAuthenticated: false,
-      queryClient
-    } as Context,
     scrollRestoration: true,
     defaultPreload: 'intent',
     defaultPreloadStaleTime: 0,
   })
 }
 
+// @ts-ignore - Register interface is used by TanStack Router internally
 declare module '@tanstack/react-router' {
   interface Register {
     router: ReturnType<typeof getRouter>

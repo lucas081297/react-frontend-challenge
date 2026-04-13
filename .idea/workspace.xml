@@ -4,20 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: update poster sizes for better image quality in movie components&#10;&#10;- Change `PosterSize` in `UpcomingMainCard` to `Original` for higher resolution images.&#10;- Update `PosterSize` in `MovieCarrousel` to `Large` and add redirection to the movies section.">
-      <change afterPath="$PROJECT_DIR$/src/models/watchList.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/auth.store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/settings.store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/watchList.store.ts" afterDir="false" />
+    <list default="true" id="1a9a5689-a127-4d2b-808e-72b31481af01" name="Changes" comment="feat: integrate watchlist management across movie components&#10;&#10;- Add `useWatchListStore` with Zustand for managing watchlist state.&#10;- Enable add/remove watchlist actions in `UpcomingMainCard`, `TrendingCarrousel`, `MovieCarrousel`, and `PopularCarrousel`.&#10;- Update `CardImage` with dynamic watchlist buttons (add/remove). &#10;- Create `watchList` route to display saved movies using `MovieCarrousel`. &#10;- Add `zustand` dependency to project.">
+      <change afterPath="$PROJECT_DIR$/src/models/login.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/router.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CardImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CardImage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MovieCarrousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MovieCarrousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PopularCarrousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopularCarrousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TrendingCarrousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TrendingCarrousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UpcomingMainCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UpcomingMainCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/__auth/watchList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth/watchList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/InputIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InputIcon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/__auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__auth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/__root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__root.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/auth.store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/cookies.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +27,9 @@
     <persistenceIdMap>
       <entry key="_D:/DEV/Desafios/rotten-potatoes" value="3C3AFKUi1JTXhK8GfiYf5hB5KJm" />
     </persistenceIdMap>
+  </component>
+  <component name="CopilotUserSelectedChatMode">
+    <option name="chatModeId" value="Agent" />
   </component>
   <component name="EmbeddingIndexingInfo">
     <option name="cachedIndexableFilesCount" value="106" />
@@ -141,7 +143,7 @@
       <workItem from="1775603776450" duration="2049000" />
       <workItem from="1775606006208" duration="525000" />
       <workItem from="1775606548275" duration="1822000" />
-      <workItem from="1775609566502" duration="120776000" />
+      <workItem from="1775609566502" duration="127962000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add authentication context and update routing for login and home pages">
       <option name="closed" value="true" />
@@ -487,7 +489,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776026837867</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="feat: integrate watchlist management across movie components&#10;&#10;- Add `useWatchListStore` with Zustand for managing watchlist state.&#10;- Enable add/remove watchlist actions in `UpcomingMainCard`, `TrendingCarrousel`, `MovieCarrousel`, and `PopularCarrousel`.&#10;- Update `CardImage` with dynamic watchlist buttons (add/remove). &#10;- Create `watchList` route to display saved movies using `MovieCarrousel`. &#10;- Add `zustand` dependency to project.">
+      <option name="closed" value="true" />
+      <created>1776032510925</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1776032510925</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -505,7 +515,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: update AuthLayout component with improved styling and structure" />
     <MESSAGE value="feat: add embla-carousel-react dependency for carousel functionality" />
     <MESSAGE value="feat: enhance CardImage component with improved styling and optional image prop" />
     <MESSAGE value="feat: add MovieCarrousel component for displaying movies in a carousel format" />
@@ -530,7 +539,8 @@
     <MESSAGE value="feat: add person details route and TMDB person service&#10;&#10;- Implement `/people/$personId` route for displaying detailed information about a person.&#10;- Add `getPersonDetails` function in TMDB person service using React Query.&#10;- Create `Person` model to define the structure of person data.&#10;- Update `CardImage` to support redirection to the person details route." />
     <MESSAGE value="feat: append credits to person details and display popular movies&#10;&#10;- Update TMDB person service to include `credits` in the response.&#10;- Extend the `Person` model to include `credits` with cast details.&#10;- Add a `MovieCarrousel` component to the person details route for displaying popular movies." />
     <MESSAGE value="feat: update poster sizes for better image quality in movie components&#10;&#10;- Change `PosterSize` in `UpcomingMainCard` to `Original` for higher resolution images.&#10;- Update `PosterSize` in `MovieCarrousel` to `Large` and add redirection to the movies section." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: update poster sizes for better image quality in movie components&#10;&#10;- Change `PosterSize` in `UpcomingMainCard` to `Original` for higher resolution images.&#10;- Update `PosterSize` in `MovieCarrousel` to `Large` and add redirection to the movies section." />
+    <MESSAGE value="feat: integrate watchlist management across movie components&#10;&#10;- Add `useWatchListStore` with Zustand for managing watchlist state.&#10;- Enable add/remove watchlist actions in `UpcomingMainCard`, `TrendingCarrousel`, `MovieCarrousel`, and `PopularCarrousel`.&#10;- Update `CardImage` with dynamic watchlist buttons (add/remove). &#10;- Create `watchList` route to display saved movies using `MovieCarrousel`. &#10;- Add `zustand` dependency to project." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: integrate watchlist management across movie components&#10;&#10;- Add `useWatchListStore` with Zustand for managing watchlist state.&#10;- Enable add/remove watchlist actions in `UpcomingMainCard`, `TrendingCarrousel`, `MovieCarrousel`, and `PopularCarrousel`.&#10;- Update `CardImage` with dynamic watchlist buttons (add/remove). &#10;- Create `watchList` route to display saved movies using `MovieCarrousel`. &#10;- Add `zustand` dependency to project." />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

@@ -5,7 +5,8 @@ import { QueryClientProvider } from '@tanstack/react-query'
 
 export const Route = createFileRoute('/__auth')({
   beforeLoad: ({ context }) => {
-    if (!context.isAuthenticated) {
+    // Verifica no context se está autenticado (vem do __root.tsx)
+    if (!(context as any).isAuthenticated) {
       throw redirect({ to: '/login' })
     }
   },
@@ -14,6 +15,8 @@ export const Route = createFileRoute('/__auth')({
 
 export function AuthLayout() {
   const { queryClient } = Route.useRouteContext()
+
+
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex h-screen bg-background-primary">

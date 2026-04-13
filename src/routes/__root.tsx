@@ -1,15 +1,17 @@
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
+import {
+  HeadContent,
+  Scripts,
+  createRootRoute,
+  redirect,
+} from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import appCss from '../styles.css?url'
 import * as React from 'react'
 import { QueryClient } from '@tanstack/query-core'
-
-interface MyRouterContext {
-  isAuthenticated: boolean
-  queryClient: any
-}
+import { CookiesProvider } from 'react-cookie'
+import { getToken } from '#/store/cookie.store.ts'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -21,10 +23,19 @@ const queryClient = new QueryClient({
 })
 
 export const Route = createRootRoute({
-  context: (): MyRouterContext => ({
-    isAuthenticated: true,
-    queryClient
-
+  beforeLoad: ({ location }) => {
+    const isAuthenticated = getToken()
+    // Redireciona para login se não autenticado e não está já na página de login
+    if (!isAuthenticated && location.pathname !== '/login') {
+      throw redirect({ to: '/login' })
+    }
+    return {
+      isAuthenticated,
+    }
+  },
+  context: () => ({
+    isAuthenticated: getToken(),
+    queryClient,
   }),
   head: () => ({
     meta: [
@@ -57,7 +68,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className="font-sans antialiased [overflow-wrap:anywhere]">
-        {children}
+        <CookiesProvider defaultSetOptions={{ path: '/' }}>
+          {children}
+        </CookiesProvider>
         <TanStackDevtools
           config={{
             position: 'bottom-right',
