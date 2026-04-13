@@ -2,8 +2,23 @@ import { useState, useMemo } from 'react'
 import { Button } from '#/components/ui/button.tsx'
 import { Badge } from '#/components/ui/badge.tsx'
 import { Input } from '#/components/ui/input.tsx'
-import { Filter, X, Calendar, Star } from 'lucide-react'
+import {
+  Filter,
+  X,
+  Calendar,
+  Star,
+  ArrowUpDown,
+  ArrowUp,
+  ArrowDown,
+} from 'lucide-react'
 import type { TrendingMovie, TrendingTvShow } from '#/models/trending.ts'
+
+type SortField = 'title' | 'genre' | 'rating'
+type SortDirection = 'asc' | 'desc'
+interface SortConfig {
+  field: SortField
+  direction: SortDirection
+}
 
 interface FilterPanelProps {
   movies: (TrendingMovie | TrendingTvShow)[]
@@ -23,9 +38,20 @@ export function FilterPanel({
   const [minYear, setMinYear] = useState<string>('')
   const [maxYear, setMaxYear] = useState<string>('')
   const [minRating, setMinRating] = useState<string>('')
+  const [sortConfig, setSortConfig] = useState<SortConfig>({
+    field: 'title',
+    direction: 'asc',
+  })
 
   const hasActiveFilters =
     selectedGenres.length > 0 || minYear || maxYear || minRating
+
+  // Criar mapa de gêneros para lookup rápido
+  const genresMap = useMemo(() => {
+    const map = new Map<number, string>()
+    availableGenres.forEach((genre) => map.set(genre.id, genre.name))
+    return map
+  }, [availableGenres])
 
   const filteredMovies = useMemo(() => {
     return movies.filter((movie) => {
@@ -33,12 +59,11 @@ export function FilterPanel({
       if (selectedGenres.length > 0) {
         const movieGenres = movie.genre_ids
         const hasAnyGenre = selectedGenres.some((genreId) =>
-          movieGenres.includes(genreId),
+          movieGenres?.includes(genreId),
         )
         if (!hasAnyGenre) return false
       }
 
-      // Filtrar por ano de lançamento
       const releaseDate =
         'release_date' in movie
           ? movie.release_date
@@ -53,18 +78,53 @@ export function FilterPanel({
         if (maxYear && year > parseInt(maxYear)) return false
       }
 
-      // Filtrar por nota mínima
-      if (minRating && movie.vote_average < parseFloat(minRating)) {
-        return false
-      }
-
-      return true
+      return !(minRating && movie.vote_average < parseFloat(minRating))
     })
   }, [movies, selectedGenres, minYear, maxYear, minRating])
 
+  // Ordenar filmes
+  const sortedMovies = useMemo(() => {
+    const sorted = [...filteredMovies]
+
+    sorted.sort((a, b) => {
+      let comparison = 0
+
+      switch (sortConfig.field) {
+        case 'title':
+          const titleA =
+            ('title' in a ? a.title : (a as TrendingTvShow).name) || ''
+          const titleB =
+            ('title' in b ? b.title : (b as TrendingTvShow).name) || ''
+          comparison = titleA.localeCompare(titleB, 'pt-BR', {
+            sensitivity: 'base',
+          })
+          break
+
+        case 'genre':
+          // Pegar o primeiro gênero de cada filme para ordenação
+          const firstGenreA = a.genre_ids?.[0]
+          const firstGenreB = b.genre_ids?.[0]
+          const genreNameA = firstGenreA ? genresMap.get(firstGenreA) || '' : ''
+          const genreNameB = firstGenreB ? genresMap.get(firstGenreB) || '' : ''
+          comparison = genreNameA.localeCompare(genreNameB, 'pt-BR', {
+            sensitivity: 'base',
+          })
+          break
+
+        case 'rating':
+          comparison = (a.vote_average || 0) - (b.vote_average || 0)
+          break
+      }
+
+      return sortConfig.direction === 'asc' ? comparison : -comparison
+    })
+
+    return sorted
+  }, [filteredMovies, sortConfig, genresMap])
+
   useMemo(() => {
-    onFilterChange(filteredMovies)
-  }, [filteredMovies, onFilterChange])
+    onFilterChange(sortedMovies)
+  }, [sortedMovies, onFilterChange])
 
   const toggleGenre = (genreId: number) => {
     setSelectedGenres((prev) =>
@@ -81,11 +141,29 @@ export function FilterPanel({
     setMinRating('')
   }
 
+  const handleSort = (field: SortField) => {
+    setSortConfig((prev) => ({
+      field,
+      direction:
+        prev.field === field && prev.direction === 'asc' ? 'desc' : 'asc',
+    }))
+  }
+
+  const getSortIcon = (field: SortField) => {
+    if (sortConfig.field !== field) {
+      return <ArrowUpDown size={14} className="text-muted-foreground" />
+    }
+    return sortConfig.direction === 'asc' ? (
+      <ArrowUp size={14} className="text-primary" />
+    ) : (
+      <ArrowDown size={14} className="text-primary" />
+    )
+  }
+
   const currentYear = new Date().getFullYear()
 
   return (
     <div className={`flex flex-col gap-4 ${className}`}>
-
       <div className="flex items-center justify-between">
         <Button
           variant="outline"
@@ -120,7 +198,6 @@ export function FilterPanel({
 
       {isExpanded && (
         <div className="bg-surface-variant/10 rounded-lg p-4 space-y-4 border border-border">
-          {/* Filtro de Gêneros */}
           <div className="space-y-2">
             <h3 className="text-sm font-semibold text-foreground">Gêneros</h3>
             <div className="flex flex-wrap gap-2">
@@ -143,7 +220,45 @@ export function FilterPanel({
             </div>
           </div>
 
-          {/* Filtro de Ano */}
+          <div className="space-y-2">
+            <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
+              <ArrowUpDown size={14} />
+              Ordenar por
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => handleSort('title')}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                  sortConfig.field === 'title'
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                }`}
+              >
+                Título {getSortIcon('title')}
+              </button>
+              <button
+                onClick={() => handleSort('genre')}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                  sortConfig.field === 'genre'
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                }`}
+              >
+                Gênero {getSortIcon('genre')}
+              </button>
+              <button
+                onClick={() => handleSort('rating')}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                  sortConfig.field === 'rating'
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                }`}
+              >
+                Rating {getSortIcon('rating')}
+              </button>
+            </div>
+          </div>
+
           <div className="space-y-2">
             <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
               <Calendar size={14} />
@@ -172,7 +287,6 @@ export function FilterPanel({
             </div>
           </div>
 
-          {/* Filtro de Nota */}
           <div className="space-y-2">
             <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
               <Star size={14} />

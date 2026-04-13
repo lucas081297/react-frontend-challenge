@@ -1,12 +1,13 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import type { TrendingMovie, TrendingTvShow } from '#/models/trending.ts'
+import type { Genres } from '#/models/genres.ts'
 
 export interface WatchListState {
   watchList: (TrendingMovie | TrendingTvShow)[]
   addToWatchList: (
     movie: TrendingMovie | TrendingTvShow,
-    genres?: { id: number; name: string }[],
+    genres?: Genres[],
   ) => void
   removeFromWatchList: (movieId: number) => void
   clearWatchList: () => void
@@ -17,7 +18,6 @@ export const useWatchListStore = create<WatchListState>()(
     (set) => ({
       watchList: [],
 
-      // Adiciona o objeto completo à lista com os nomes dos gêneros
       addToWatchList: (movie, genres) =>
         set((state) => {
           const isAlreadyInList = state.watchList.some((m) => m.id === movie.id)
@@ -27,7 +27,7 @@ export const useWatchListStore = create<WatchListState>()(
           const movieWithGenres = genres
             ? {
                 ...movie,
-                genres_names: movie.genres_ids
+                genres_names: movie.genre_ids
                   ?.map((id) => genres.find((g) => g.id === id)?.name)
                   .filter(Boolean),
               }
