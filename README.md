@@ -1,4 +1,4 @@
-#Para Executar
+# Para Executar
 - Rode npm i
 - Rode npm run dev na raiz
 
