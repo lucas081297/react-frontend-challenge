@@ -4,6 +4,7 @@ O Rotten Potatoes é um sistema de curadoria e descoberta de filmes, onde os usu
 
 ---
 
+
 ## 🎯 Telas
 - **Home:** Apresenta uma visão geral dos filmes mais populares, lançamentos recentes e recomendações personalizadas.
 - **Explorar:** Permite aos usuários buscar filmes por título, gênero, diretor ou ator.
