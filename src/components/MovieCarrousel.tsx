@@ -33,8 +33,8 @@ export function MovieCarrousel({
 
   if (!movies || movies.length === 0) {
     return (
-      <div className="flex items-center justify-center h-48 bg-surface-variant/20 rounded-xl border border-white/5">
-        <p className="text-on-surface-secundary">Nenhum filme encontrado.</p>
+      <div className="flex items-center justify-center h-48 bg-surface-variant/20 rounded-xl border border-[var(--border-color)]">
+        <p className="text-[var(--text-muted)]">Nenhum filme encontrado.</p>
       </div>
     )
   }
@@ -82,8 +82,12 @@ export function MovieCarrousel({
                   removeFromWatchList={removeFromWatchList}
                 />
                 <div className="flex flex-col gap-1">
-                  <span>{title}</span>
-                  <span className="text-sm">{formatDateFromString(date)}</span>
+                  <span className="text-[var(--text-primary)] font-medium">
+                    {title}
+                  </span>
+                  <span className="text-sm text-[var(--text-muted)]">
+                    {formatDateFromString(date)}
+                  </span>
                   {genreNames.length > 0 && (
                     <div className="flex flex-wrap gap-1 mt-1">
                       {genreNames.map((genre, idx) => (
@@ -102,8 +106,8 @@ export function MovieCarrousel({
             )
           })}
         </CarouselContent>
-        <CarouselPrevious className="left-0 bg-surface-variant/50 border-none text-white hover:bg-on-surface-primary hover:text-black transition-colors" />
-        <CarouselNext className="right-0 bg-surface-variant/50 border-none text-white hover:bg-on-surface-primary hover:text-black transition-colors" />
+        <CarouselPrevious className="left-0 bg-[var(--bg-surface)] border border-[var(--border-color)] text-[var(--text-primary)] hover:bg-[var(--bg-surface-hover)] hover:text-[var(--primary-color)] transition-colors" />
+        <CarouselNext className="right-0 bg-[var(--bg-surface)] border border-[var(--border-color)] text-[var(--text-primary)] hover:bg-[var(--bg-surface-hover)] hover:text-[var(--primary-color)] transition-colors" />
       </Carousel>
     </div>
   )

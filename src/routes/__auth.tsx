@@ -16,10 +16,12 @@ export const Route = createFileRoute('/__auth')({
 export function AuthLayout() {
   const { queryClient } = Route.useRouteContext()
 
-
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex h-screen bg-background-primary">
+      <div
+        className="flex h-screen"
+        style={{ backgroundColor: 'var(--bg-body)' }}
+      >
         <SidebarProvider>
           <AppSidebar />
           <main className="flex-1 overflow-y-auto overflow-x-hidden">

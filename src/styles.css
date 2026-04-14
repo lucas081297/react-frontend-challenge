@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap');
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
-@import "@fontsource-variable/inter";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import '@fontsource-variable/inter';
 
 @custom-variant dark (&:is(.dark *));
 @plugin "@tailwindcss/typography";
@@ -11,32 +11,30 @@
 @theme {
   /*Colors*/
   --color-surface-variant: #353535;
-  --color-on-surface-primary: #F3CA52;
+  --color-on-surface-primary: #f3ca52;
   --color-on-surface-secundary: #d0c5af;
   --color-background-primary: #131313;
 
   /*Fontes*/
-  --font-headline: "Epilogue", sans-serif;
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-headline: 'Epilogue', sans-serif;
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
 
   /*Animações*/
   --animate-fade-in-up: fade-in-up 2s ease-out;
 
   @keyframes fade-in-up {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 }
 
 :root {
-
   /*Herdados*/
   --sea-ink: #173a40;
   --sea-ink-soft: #416166;
@@ -91,7 +89,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-:root[data-theme="dark"] {
+:root[data-theme='dark'] {
   --sea-ink: #d7ece8;
   --sea-ink-soft: #afcdc8;
   --lagoon: #60d7cf;
@@ -114,7 +112,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  :root:not([data-theme='light']) {
     --sea-ink: #d7ece8;
     --sea-ink-soft: #afcdc8;
     --lagoon: #60d7cf;
@@ -151,24 +149,56 @@ body {
   margin: 0;
   color: var(--sea-ink);
   font-family: var(--font-sans);
-  background-color: var(--color-background-primary);
+  background-color: var(--bg-body);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.light {
+  --bg-body: #ffffff;
+  --bg-surface: #ffffff;
+  --bg-surface-variant: #ffffff;
+  --bg-surface-hover: #f0f0f0;
+  --bg-overlay: rgba(0, 0, 0, 0.08);
+  --text-primary: #000000;
+  --text-secondary: #333333;
+  --text-muted: #666666;
+  --text-inverse: #ffffff;
+  --border-color: rgba(0, 0, 0, 0.15);
+  --primary-color: #f3ca52;
+  --primary-hover: #e5b942;
+}
+
+.dark {
+  --bg-body: #131313;
+  --bg-surface: #1a1a1a;
+  --bg-surface-variant: #353535;
+  --bg-surface-hover: #404040;
+  --bg-overlay: rgba(255, 255, 255, 0.05);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-muted: rgba(255, 255, 255, 0.5);
+  --text-inverse: #000000;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --primary-color: #f3ca52;
+  --primary-hover: #e5b942;
 }
 
 body::before {
-  content: "";
+  content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -1;
   opacity: 0.28;
-
 }
 
 body::after {
-  content: "";
+  content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
@@ -204,7 +234,7 @@ pre code {
 }
 
 .display-title {
-  font-family: "Fraunces", Georgia, serif;
+  font-family: 'Fraunces', Georgia, serif;
 }
 
 .island-shell {
@@ -218,7 +248,11 @@ pre code {
 }
 
 .feature-card {
-  background: linear-gradient(165deg, color-mix(in oklab, var(--surface-strong) 93%, white 7%), var(--surface));
+  background: linear-gradient(
+    165deg,
+    color-mix(in oklab, var(--surface-strong) 93%, white 7%),
+    var(--surface)
+  );
   box-shadow:
     0 1px 0 var(--inset-glint) inset,
     0 18px 34px rgba(30, 90, 72, 0.1),
@@ -233,7 +267,10 @@ pre code {
 button,
 .island-shell,
 a {
-  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease,
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
     transform 180ms ease;
 }
 
@@ -254,7 +291,7 @@ a {
 }
 
 .nav-link::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   bottom: -6px;

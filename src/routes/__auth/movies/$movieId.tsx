@@ -69,25 +69,29 @@ function MovieInfo() {
         <section className="flex flex-col w-[65%] gap-10">
           <div className="flex flex-row gap-7 items-start py-3 px-2 rounded-2xl bg-surface-variant/20">
             <div className="flex flex-col text-nowrap">
-              <span className="text-xs uppercase text-amber-600">
+              <span className="text-xs uppercase text-[var(--primary-color)]">
                 Classificação
               </span>
-              <span className="font-extrabold flex gap-1">
-                <Star className="fill-amber-300" />
+              <span className="font-extrabold flex gap-1 text-[var(--text-primary)]">
+                <Star className="fill-[var(--primary-color)] text-[var(--primary-color)]" />
                 {movie.vote_average}
               </span>
             </div>
 
             <div className="flex flex-col text-nowrap">
-              <span className="text-xs uppercase text-amber-600">Duração</span>
-              <span className="font-extrabold">
+              <span className="text-xs uppercase text-[var(--primary-color)]">
+                Duração
+              </span>
+              <span className="font-extrabold text-[var(--text-primary)]">
                 {formatTimeFromMinutes(movie.runtime)}
               </span>
             </div>
 
             <div className="flex flex-col">
-              <span className="text-xs uppercase text-amber-600">Generos</span>
-              <div className="flex flex-wrap gap-1 font-extrabold">
+              <span className="text-xs uppercase text-[var(--primary-color)]">
+                Generos
+              </span>
+              <div className="flex flex-wrap gap-1 font-extrabold text-[var(--text-primary)]">
                 {movie.genres.map((genre, index: number) => {
                   return (
                     <div className="block whitespace-nowrap" key={genre.id}>
@@ -102,11 +106,17 @@ function MovieInfo() {
             </div>
           </div>
           <div className="flex flex-col gap-4">
-            <h1 className="text-3xl font-bold">Sinopse</h1>
-            <article>{movie.overview}</article>
+            <h1 className="text-3xl font-bold text-[var(--text-primary)]">
+              Sinopse
+            </h1>
+            <article className="text-[var(--text-secondary)]">
+              {movie.overview}
+            </article>
           </div>
           <div className="flex flex-col gap-4">
-            <h1 className="text-3xl font-bold">Atores</h1>
+            <h1 className="text-3xl font-bold text-[var(--text-primary)]">
+              Atores
+            </h1>
             <Carousel
               opts={{
                 align: 'start',
@@ -146,7 +156,9 @@ function MovieInfo() {
         <section>
           <div className="relative pt-5">
             <div className="flex flex-col gap-2 rounded-2xl p-4 mt-4 text-sm bg-surface-variant/80">
-              <h2 className="text-md font-bold mb-2">Informações</h2>
+              <h2 className="text-md font-bold mb-2 text-[var(--text-primary)]">
+                Informações
+              </h2>
               <div className="flex flex-row gap-2 mb-3"></div>
 
               <div className="flex flex-row gap-2 text-xs">

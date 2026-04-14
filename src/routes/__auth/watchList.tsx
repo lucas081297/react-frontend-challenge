@@ -34,7 +34,9 @@ function WatchList() {
       <div className="flex flex-col justify-between gap-6">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
           <div className="flex flex-col gap-2">
-            <h1 className="text-4xl font-extrabold">Minha Lista</h1>
+            <h1 className="text-4xl font-extrabold text-[var(--text-primary)]">
+              Minha Lista
+            </h1>
             <Badge>
               {moviesToDisplay.length}{' '}
               {moviesToDisplay.length === 1 ? 'Item Salvo' : 'Itens Salvos'}

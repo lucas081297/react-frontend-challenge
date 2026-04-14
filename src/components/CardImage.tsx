@@ -79,7 +79,7 @@ export function CardImage(props: CardImageProps) {
         </span>
         <span
           style={redirect != 'People' ? { lineClamp: 3 } : {}}
-          className="text-white/90 text-lg md:text-xl mt-4 leading-relaxed drop-shadow-md"
+          className="text-white/90 text-sm mt-4 leading-relaxed drop-shadow-md"
         >
           {props.description}
         </span>

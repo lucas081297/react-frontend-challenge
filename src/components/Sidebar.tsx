@@ -4,6 +4,8 @@ import {
   HomeIcon,
   type LucideIcon,
   LogOut,
+  Moon,
+  Sun,
   User,
 } from 'lucide-react'
 import {
@@ -23,6 +25,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { Link, useNavigate } from '@tanstack/react-router'
 import { removeToken } from '#/store/cookie.store.ts'
+import { useThemeStore } from '#/store/theme.store.ts'
 import { toast } from 'sonner'
 
 interface SideBarPath {
@@ -33,6 +36,7 @@ interface SideBarPath {
 
 export default function AppSidebar() {
   const navigate = useNavigate()
+  const { theme, toggleTheme } = useThemeStore()
   const sideBarPaths: SideBarPath[] = [
     { name: 'Home', path: '/home', icon: HomeIcon },
     { name: 'Explorar', path: '/explore', icon: Compass },
@@ -46,18 +50,27 @@ export default function AppSidebar() {
   }
 
   return (
-    <Sidebar className="border-r border-white/5 shadow-2xl">
-      <SidebarHeader className="bg-surface-variant">
+    <Sidebar
+      className="border-r shadow-2xl"
+      style={{
+        borderColor: 'var(--border-color)',
+        backgroundColor: 'var(--bg-surface-variant)',
+      }}
+    >
+      <SidebarHeader style={{ backgroundColor: 'var(--bg-surface-variant)' }}>
         <div>
           <img alt="Logo" src="public/logo-nobg.png" />
         </div>
       </SidebarHeader>
-      <SidebarContent className="bg-surface-variant">
+      <SidebarContent style={{ backgroundColor: 'var(--bg-surface-variant)' }}>
         {sideBarPaths.map((path) => {
           return (
-            <SidebarGroup className="text-white/60 p-0">
+            <SidebarGroup className="p-0">
               <Link to={path.path}>
-                <div className="flex flex-row gap-2 mx-2 px-1 py-3 rounded hover:bg-on-surface-primary">
+                <div
+                  className="flex flex-row gap-2 mx-2 px-1 py-3 rounded transition-colors hover:bg-[var(--bg-surface-hover)] hover:text-[var(--text-primary)] cursor-pointer"
+                  style={{ color: 'var(--text-secondary)' }}
+                >
                   <path.icon></path.icon>
                   <span>{path.name}</span>
                 </div>
@@ -66,35 +79,116 @@ export default function AppSidebar() {
           )
         })}
       </SidebarContent>
-      <SidebarFooter className="bg-surface-variant px-0">
+      <SidebarFooter
+        className="px-0"
+        style={{ backgroundColor: 'var(--bg-surface-variant)' }}
+      >
         <Sheet>
           <SheetTrigger asChild>
-            <button className="flex flex-row items-center gap-2 mx-2 px-1 py-3 rounded hover:bg-on-surface-primary text-white/60">
-              <div className="w-8 h-8 rounded-full bg-on-surface-primary/20 flex items-center justify-center">
-                <User size={18} className="text-white" />
+            <button
+              className="flex flex-row items-center gap-2 mx-2 px-1 py-3 rounded transition-colors hover:bg-[var(--bg-surface-hover)] hover:text-[var(--text-primary)] cursor-pointer"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              <div
+                className="w-8 h-8 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: 'var(--bg-overlay)' }}
+              >
+                <User size={18} style={{ color: 'var(--text-primary)' }} />
               </div>
               <span className="text-sm">Conta</span>
             </button>
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="bg-surface-variant border-white/5"
+            style={{
+              backgroundColor: 'var(--bg-surface-variant)',
+              borderColor: 'var(--border-color)',
+            }}
           >
             <SheetHeader>
-              <SheetTitle className="text-white">Minha Conta</SheetTitle>
+              <SheetTitle style={{ color: 'var(--text-primary)' }}>
+                Minha Conta
+              </SheetTitle>
             </SheetHeader>
             <div className="flex flex-col gap-4 mt-6">
-              <div className="flex items-center gap-3 p-4 bg-white/5 rounded-lg">
-                <div className="w-12 h-12 rounded-full bg-on-surface-primary/20 flex items-center justify-center">
-                  <User size={24} className="text-white" />
+              <div
+                className="flex items-center gap-3 p-4 rounded-lg"
+                style={{ backgroundColor: 'var(--bg-overlay)' }}
+              >
+                <div
+                  className="w-12 h-12 rounded-full flex items-center justify-center"
+                  style={{ backgroundColor: 'var(--bg-overlay)' }}
+                >
+                  <User size={24} style={{ color: 'var(--text-primary)' }} />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-white font-medium">Usuário</span>
-                  <span className="text-white/60 text-sm">
+                  <span
+                    style={{ color: 'var(--text-primary)' }}
+                    className="font-medium"
+                  >
+                    Usuário
+                  </span>
+                  <span
+                    style={{ color: 'var(--text-muted)' }}
+                    className="text-sm"
+                  >
                     usuario@email.com
                   </span>
                 </div>
               </div>
+
+              <div
+                className="flex items-center justify-between p-4 rounded-lg"
+                style={{ backgroundColor: 'var(--bg-overlay)' }}
+              >
+                <span
+                  style={{ color: 'var(--text-primary)' }}
+                  className="font-medium"
+                >
+                  Tema
+                </span>
+                <button
+                  onClick={toggleTheme}
+                  className="relative flex items-center justify-between w-20 h-10 rounded-full px-1 transition-colors"
+                  style={{
+                    backgroundColor: 'var(--bg-surface)',
+                    borderColor: 'var(--border-color)',
+                  }}
+                  aria-label={
+                    theme === 'dark'
+                      ? 'Mudar para modo claro'
+                      : 'Mudar para modo escuro'
+                  }
+                >
+                  <span
+                    className={`absolute w-8 h-8 rounded-full transition-transform duration-300 ${
+                      theme === 'dark' ? 'translate-x-0' : 'translate-x-10'
+                    }`}
+                    style={{ backgroundColor: 'var(--primary-color)' }}
+                  />
+                  <Moon
+                    size={16}
+                    className="z-10 ml-1"
+                    style={{
+                      color:
+                        theme === 'dark'
+                          ? 'var(--text-primary)'
+                          : 'var(--text-muted)',
+                    }}
+                  />
+                  <Sun
+                    size={16}
+                    className="z-10 mr-1"
+                    style={{
+                      color:
+                        theme === 'light'
+                          ? 'var(--text-primary)'
+                          : 'var(--text-muted)',
+                    }}
+                  />
+                </button>
+              </div>
+
               <Button
                 variant="destructive"
                 className="w-full flex items-center gap-2"

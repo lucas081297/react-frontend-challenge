@@ -59,13 +59,41 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         href: appCss,
       },
     ],
+    scripts: [
+      {
+        type: 'text/javascript',
+        innerHTML: `
+          (function() {
+            const theme = localStorage.getItem('theme') || 'dark';
+            const parsed = JSON.parse(theme);
+            const themeName = parsed?.state?.theme || 'dark';
+            document.documentElement.classList.add(themeName);
+          })()
+        `,
+      },
+    ],
   }),
   shellComponent: RootDocument,
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  // Get theme from localStorage on client side
+  const [themeClass, setThemeClass] = React.useState('dark')
+
+  React.useEffect(() => {
+    const stored = localStorage.getItem('theme')
+    if (stored) {
+      try {
+        const parsed = JSON.parse(stored)
+        setThemeClass(parsed?.state?.theme || 'dark')
+      } catch {
+        setThemeClass('dark')
+      }
+    }
+  }, [])
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={themeClass}>
       <head>
         <title></title>
         <HeadContent />

@@ -169,7 +169,7 @@ export function FilterPanel({
           variant="outline"
           size="sm"
           onClick={() => setIsExpanded(!isExpanded)}
-          className="gap-2"
+          className="gap-2 border-[var(--border-color)] text-[var(--text-primary)] hover:bg-[var(--bg-surface-hover)] hover:text-[var(--text-primary)]"
         >
           <Filter size={16} />
           Filtros
@@ -199,7 +199,9 @@ export function FilterPanel({
       {isExpanded && (
         <div className="bg-surface-variant/10 rounded-lg p-4 space-y-4 border border-border">
           <div className="space-y-2">
-            <h3 className="text-sm font-semibold text-foreground">Gêneros</h3>
+            <h3 className="text-sm font-semibold text-[var(--text-primary)]">
+              Gêneros
+            </h3>
             <div className="flex flex-wrap gap-2">
               {availableGenres.map((genre) => (
                 <button
@@ -221,7 +223,7 @@ export function FilterPanel({
           </div>
 
           <div className="space-y-2">
-            <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-[var(--text-primary)] flex items-center gap-2">
               <ArrowUpDown size={14} />
               Ordenar por
             </h3>
@@ -260,7 +262,7 @@ export function FilterPanel({
           </div>
 
           <div className="space-y-2">
-            <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-[var(--text-primary)] flex items-center gap-2">
               <Calendar size={14} />
               Ano de Lançamento
             </h3>
@@ -288,7 +290,7 @@ export function FilterPanel({
           </div>
 
           <div className="space-y-2">
-            <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-[var(--text-primary)] flex items-center gap-2">
               <Star size={14} />
               Nota Mínima
             </h3>

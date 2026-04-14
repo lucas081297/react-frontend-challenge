@@ -107,7 +107,9 @@ function Explore() {
   return (
     <main className="flex flex-col gap-8 p-8 bg-surface-variant/10 min-h-full">
       <div className="flex flex-col gap-6">
-        <h1 className="text-4xl font-extrabold">Explorar Filmes</h1>
+        <h1 className="text-4xl font-extrabold text-[var(--text-primary)]">
+          Explorar Filmes
+        </h1>
 
         <div className="flex flex-col md:flex-row gap-4 items-start">
           <div className="max-w-xl flex-1">
@@ -132,13 +134,13 @@ function Explore() {
 
       {isLoading && page === 1 && (
         <div className="flex items-center justify-center h-48">
-          <p className="text-on-surface-secundary">Carregando...</p>
+          <p className="text-[var(--text-muted)]">Carregando...</p>
         </div>
       )}
 
       {!debouncedQuery && !isLoading && (
         <div className="flex items-center justify-center h-48">
-          <p className="text-on-surface-secundary">
+          <p className="text-[var(--text-muted)]">
             Digite algo para buscar filmes
           </p>
         </div>
@@ -146,7 +148,7 @@ function Explore() {
 
       {data?.results.length === 0 && debouncedQuery && !isLoading && (
         <div className="flex items-center justify-center h-48">
-          <p className="text-on-surface-secundary">
+          <p className="text-[var(--text-muted)]">
             Nenhum filme encontrado para &quot;{debouncedQuery}&quot;
           </p>
         </div>
@@ -202,11 +204,11 @@ function Explore() {
                   <Link
                     to="/movies/$movieId"
                     params={{ movieId: movie.id.toString() }}
-                    className="font-medium line-clamp-1 hover:text-on-surface-primary transition-colors"
+                    className="font-medium line-clamp-1 text-[var(--text-primary)] hover:text-[var(--primary-color)] transition-colors"
                   >
                     {title}
                   </Link>
-                  <span className="text-sm text-on-surface-secundary">
+                  <span className="text-sm text-[var(--text-muted)]">
                     {formatDateFromString(date)}
                   </span>
 
@@ -236,7 +238,7 @@ function Explore() {
                     ) : (
                       <button
                         onClick={() => handleAddToWatchList(movie)}
-                        className="flex items-center gap-1 text-xs text-on-surface-primary hover:text-on-surface-primary/80 transition-colors"
+                        className="flex items-center gap-1 text-xs text-[var(--primary-color)] hover:text-[var(--primary-hover)] transition-colors"
                       >
                         <Plus size={14} />
                         Adicionar
