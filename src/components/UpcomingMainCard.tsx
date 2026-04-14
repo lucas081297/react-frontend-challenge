@@ -27,11 +27,11 @@ export function UpcomingMainCard() {
   }
 
   useEffect(() => {
-    if (data && data.results.length > 0 && !upcomingMovie) {
+    if (data && data.results.length > 0) {
       const randomIdMovie = Math.floor(Math.random() * data.results.length)
       setUpcomingMovie(data.results[randomIdMovie])
     }
-  }, [data, upcomingMovie])
+  }, [data])
 
   if (isLoading) {
     return <Skeleton className="aspect-video w-full" />

@@ -29,9 +29,9 @@ export function MovieCarrousel({
   removeFromWatchList,
 }: MovieCarrouselProps) {
   const { data: genresData } = getMovieGenres()
-  const genresMap = new Map(genresData?.genres.map((g) => [g.id, g.name]))
+  const genresMap = new Map(genresData?.genres?.map((g) => [g.id, g.name]))
 
-  if (movies.length === 0) {
+  if (!movies || movies.length === 0) {
     return (
       <div className="flex items-center justify-center h-48 bg-surface-variant/20 rounded-xl border border-white/5">
         <p className="text-on-surface-secundary">Nenhum filme encontrado.</p>
