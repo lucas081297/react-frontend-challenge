@@ -1,3 +1,7 @@
+#Para Executar
+- Rode npm i
+- Rode npm run dev na raiz
+
 # Sobre
 
 O Rotten Potatoes é um sistema de curadoria e descoberta de filmes, onde os usuários podem explorar uma vasta coleção de títulos, criar listas personalizadas e compartilhar suas opiniões. O objetivo é proporcionar uma experiência rica e interativa para os amantes do cinema, permitindo que eles encontrem facilmente filmes que correspondam aos seus gostos e interesses.
