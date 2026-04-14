@@ -6,81 +6,37 @@ O Rotten Potatoes é um sistema de curadoria e descoberta de filmes, onde os usu
 
 
 ## 🎯 Telas
+- **Login** Autenticação do usuário. Obs.: Por não haver um backend a autenticação é ficticia
+
+  <img width="902" height="887" alt="image" src="https://github.com/user-attachments/assets/5c5d4615-a3c6-439c-896a-a39f5eb30f7c" />
+
 - **Home:** Apresenta uma visão geral dos filmes mais populares, lançamentos recentes e recomendações personalizadas.
+
+  <img width="1298" height="1233" alt="image" src="https://github.com/user-attachments/assets/1901d2e2-897e-401e-abb8-49fcba92c410" />
+  
+  A home sempre exibirá um filme que será lançado em breve na plataforma.
+  Também é possível ver os filmes em tendencia e populares nos carroseis abaixo. Para exibir todos de acordo com a característica de cada um, selecione "Ver tudo".
+
 - **Explorar:** Permite aos usuários buscar filmes por título, gênero, diretor ou ator.
+Nessa tela é possível filtrar os filmes, adicionar a lista e remover (caso já esteja na sua lista).
+Caso selecione algum filme, será redirecionado para Movie Details
+
+<img width="1102" height="1104" alt="image" src="https://github.com/user-attachments/assets/ab48368d-10dc-4bae-b9ae-8963608d8bcd" />
+
+
 - **Movie Details:** Exibe informações detalhadas sobre um filme específico, incluindo sinopse, elenco, avaliações e trailers.
+
+<img width="1121" height="1118" alt="image" src="https://github.com/user-attachments/assets/58f9bfb1-70df-4d10-8f76-3a10c0f99695" />
+
+
+- **Person**: Exibe informações de um ator e filmes em que participou
+<img width="1126" height="998" alt="image" src="https://github.com/user-attachments/assets/3b574da3-e725-4199-be63-04bd96811efd" />
+
 - **Minha Lista:** Área onde os usuários podem criar e gerenciar sua lista de filmes favoritos, assistir mais tarde ou já assistidos.
-### 📂 Escolha sua Missão
+Aqui é possível ordenar e filtrar a lista
 
-Você tem a liberdade de escolher **um** dos dois desafios abaixo para implementar. Ambos possuem o mesmo peso e complexidade técnica. Escolha aquele com o qual você se sentir mais criativo:
+<img width="1125" height="355" alt="image" src="https://github.com/user-attachments/assets/1ec43ec5-0d25-4806-936c-4a876b7c8439" />
 
-- **[Opção A: CineDash (Filmes)](./cases/01-cinedash.md)** – Crie um dashboard analítico para curadoria de cinema.
-- **[Opção B: Libris (Livros)](./cases/02-libris.md)** – Desenvolva um gerenciador de biblioteca pessoal e estante virtual.
+-Obs.: Caso deseje deslogar, selecione "Conta" e depois "Sair"
+<img width="1318" height="766" alt="image" src="https://github.com/user-attachments/assets/27c79e4d-f65f-4071-9c64-fb89b44e227b" />
 
----
-
-## 🛠 Tech Stack Obrigatória
-
-Para alinhar com a nossa stack atual e garantir uma avaliação justa, exigimos o uso das seguintes tecnologias. **Por favor, não utilize alternativas (ex: Redux ou Context API para estado global complexo) a menos que justificável no seu README.**
-
-- **Core:** React 18+, TypeScript (Strict), Vite.
-- **Server State & Cache:** TanStack Query.
-- **Client State:** Zustand.
-- **Routing:** TanStack Router (Preferencial) ou React Router v6 (com Data Loaders).
-- **UI Components:** Shadcn/ui + TailwindCSS.
-- **Formulários:** React Hook Form ou TanStack Form + Zod (validação).
-- **Testes:** Vitest + React Testing Library.
-
-> **Diferencial:** Implementação de `TanStack Table` para listagens complexas.
-
----
-
-## 🧠 Critérios de Avaliação (O que olhamos)
-
-Seu código será revisado como se fosse um Pull Request real para a nossa codebase de produção.
-
-### 1. Arquitetura e Organização
-
-- Uso de **Feature-Sliced Design (FSD)**, Clean Architecture ou uma estrutura modular sólida.
-- Separação clara entre UI (Componentes), Lógica (Hooks) e Dados (Services/Adapters).
-- Código limpo, legível e seguindo princípios SOLID.
-
-### 2. Qualidade Técnica
-
-- Domínio do **TypeScript** (evitar `any`, tipagem correta de generics e props).
-- Uso correto do **TanStack Query** (cache keys, invalidation, prefetching).
-- Tratamento de erros e estados de loading (Skeletons, Error Boundaries).
-- Performance (memorização onde necessário, debouncing em buscas).
-
-### 3. Testes e Confiabilidade
-
-- Não buscamos 100% de cobertura, mas sim **testes significativos**.
-- Testes unitários em hooks complexos e utilitários.
-- Testes de integração nos fluxos principais (ex: Adicionar item à lista, filtrar tabela).
-
-### 4. Documentação e Git
-
-- Histórico de commits organizado.
-- Arquivo `INSTRUCTIONS.md` com instruções claras de como rodar o projeto e qual projeto foi escolhido.
-- Arquivo `ARCHITECTURE.md` explicando suas decisões técnicas (Por que usou X? Como resolveu Y?).
-
----
-
-## 🚀 Como entregar
-
-1.  Faça um **fork** deste repositório para a sua própria conta do GitHub.
-2.  Desenvolva sua solução em uma branch separada (ex: `feature/cinedash-impl` ou `feature/libris-impl`).
-3.  Quando finalizar, abra um **Pull Request** da sua branch de desenvolvimento para a branch `main` do **seu** repositório forkado. **Atenção: Não abra o PR para o repositório original da empresa.**
-4.  No corpo do PR, utilize o template fornecido e inclua uma breve descrição do que foi feito, além do projeto escolhido.
-5.  Envie o link do seu Pull Request (ou do repositório) para o recrutador responsável.
-
----
-
-## ⏳ Prazo e Escopo
-
-Sabemos que este é um desafio complexo.
-
-- **Prazo para entrega:** Você terá o prazo de 7 dias corridos para realização do desafio.
-- **Faltou tempo?** Se não conseguir entregar tudo, **priorize a qualidade sobre a quantidade**. É melhor entregar uma funcionalidade perfeitamente arquitetada e testada do que três funcionalidades quebradas. Documente o que faltou no seu README.
-
-**Boa sorte! Estamos ansiosos para ver seu código.** 🚀
